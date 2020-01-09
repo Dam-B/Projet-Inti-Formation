@@ -1,8 +1,0 @@
-package fr.formation.inti.utils;
-
-public class SqlRequest {
-
-	public static final String INSERT_CUSTOMER = "INSERT INTO customer (ADDRESS,CITY,CUST_TYPE_CD,FED_ID,POSTAL_CODE,STATE)VALUES(?,?,?,?,?,?);";
-	public static final String SELECT_CUSTOMER = "SELECT CUST_ID,ADDRESS,CITY,CUST_TYPE_CD,FED_ID,POSTAL_CODE,STATE FROM CUSTOMER" ;
-	public static final String SELECT_CUSTOMER_BY_ID = "SELECT CUST_ID,ADDRESS,CITY,CUST_TYPE_CD,FED_ID,POSTAL_CODE,STATE FROM CUSTOMER WHERE CUST_ID=?";
-}
