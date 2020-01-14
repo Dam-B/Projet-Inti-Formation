@@ -6,5 +6,8 @@ import fr.formation.inti.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+    //Find by ID
+    //Find by titleid
+    //Find by idpet
     
 }

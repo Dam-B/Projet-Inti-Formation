@@ -1,4 +1,4 @@
-package fr.fromation.inti;
+package fr.fromation.inti.entities;
 // Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
