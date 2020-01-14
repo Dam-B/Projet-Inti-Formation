@@ -1,18 +1,12 @@
 package fr.formation.inti.entities;
 
+import java.awt.Insets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-	import java.time.LocalDate;
-	import java.time.format.DateTimeFormatter;	 
-	import javafx.application.Application;
-	import javafx.geometry.Insets;
-	import javafx.scene.Scene;
-	import javafx.scene.control.DatePicker;
-	import javafx.scene.layout.FlowPane;
-	import javafx.stage.Stage;
-	import javafx.util.StringConverter;
-	 
-	
-	@SuppressWarnings("restriction")
+import org.apache.commons.beanutils.converters.StringConverter;
+
+@SuppressWarnings("restriction")
 	public class DatePickerDemo  {	 
 	    public void start(Stage stage) {
 	 

@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.formation.inti</groupId>
-	<artifactId>14_SpringBoot_SpringData_security</artifactId>
+	<artifactId>Adopte_A_Pet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>14_SpringBoot_SpringData_security</name>
+	<name>Adopte_A_Pet</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
