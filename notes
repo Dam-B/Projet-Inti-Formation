@@ -1,0 +1,12 @@
+pour les triggers sur worbench : 
+
+DELIMITER $$
+USE `adopt_a_pet`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER user_create_date BEFORE INSERT ON user
+	FOR EACH ROW SET USER.create_date = NOW()$$
+  
+  --> user_create_date : le nom du trigger
+  --> BEFORE INSERT ON : le nom de la table dans laquelle on insère un nouveau truc
+  --> FOR EACH ROW SET : le nom de la table dans laquelle on veut mettre la valeur 
+  dans la colonne indiquée par le nom qui suit le point !
+  ça donne : nom_de_la_table.nom_de_la_colonne
