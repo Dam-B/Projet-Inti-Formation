@@ -1,11 +1,14 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -15,29 +18,98 @@ import javax.persistence.Table;
 @Table(name = "centre", catalog = "adopt_a_pet")
 public class Centre implements java.io.Serializable {
 
-	private CentreId id;
+	private Integer idcentre;
+	private Departement departement;
+	private User user;
+	private String name;
+	private String tel;
+	private String city;
+	private String postalCode;
 
 	public Centre() {
 	}
 
-	public Centre(CentreId id) {
-		this.id = id;
+	public Centre(Departement departement, User user, String name) {
+		this.departement = departement;
+		this.user = user;
+		this.name = name;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({ @AttributeOverride(name = "iduser", column = @Column(name = "iduser", nullable = false)),
-			@AttributeOverride(name = "name", column = @Column(name = "name", nullable = false, length = 45)),
-			@AttributeOverride(name = "deptid", column = @Column(name = "deptid", nullable = false)),
-			@AttributeOverride(name = "tel", column = @Column(name = "tel", length = 45)),
-			@AttributeOverride(name = "city", column = @Column(name = "city", length = 45)),
-			@AttributeOverride(name = "postalCode", column = @Column(name = "postal_code", length = 45)) })
-	public CentreId getId() {
-		return this.id;
+	public Centre(Departement departement, User user, String name, String tel, String city, String postalCode) {
+		this.departement = departement;
+		this.user = user;
+		this.name = name;
+		this.tel = tel;
+		this.city = city;
+		this.postalCode = postalCode;
 	}
 
-	public void setId(CentreId id) {
-		this.id = id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+
+	@Column(name = "idcentre", unique = true, nullable = false)
+	public Integer getIdcentre() {
+		return this.idcentre;
+	}
+
+	public void setIdcentre(Integer idcentre) {
+		this.idcentre = idcentre;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "deptid", nullable = false)
+	public Departement getDepartement() {
+		return this.departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "iduser", nullable = false)
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Column(name = "name", nullable = false, length = 45)
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = "tel", length = 45)
+	public String getTel() {
+		return this.tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	@Column(name = "city", length = 45)
+	public String getCity() {
+		return this.city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Column(name = "postal_code", length = 45)
+	public String getPostalCode() {
+		return this.postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 }

@@ -1,5 +1,5 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +7,11 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,9 +24,9 @@ import javax.persistence.TemporalType;
 @Table(name = "adoption", catalog = "adopt_a_pet")
 public class Adoption implements java.io.Serializable {
 
-	private int idadoption;
-	private int iduser;
-	private int idpet;
+	private Integer idadoption;
+	private Pet pet;
+	private User user;
 	private Date dateDemande;
 	private byte validationProfile;
 	private byte validationPaiement;
@@ -31,21 +35,18 @@ public class Adoption implements java.io.Serializable {
 	public Adoption() {
 	}
 
-	public Adoption(int idadoption, int iduser, int idpet, Date dateDemande, byte validationProfile,
-			byte validationPaiement) {
-		this.idadoption = idadoption;
-		this.iduser = iduser;
-		this.idpet = idpet;
+	public Adoption(Pet pet, User user, Date dateDemande, byte validationProfile, byte validationPaiement) {
+		this.pet = pet;
+		this.user = user;
 		this.dateDemande = dateDemande;
 		this.validationProfile = validationProfile;
 		this.validationPaiement = validationPaiement;
 	}
 
-	public Adoption(int idadoption, int iduser, int idpet, Date dateDemande, byte validationProfile,
-			byte validationPaiement, Set<Paiement> paiements) {
-		this.idadoption = idadoption;
-		this.iduser = iduser;
-		this.idpet = idpet;
+	public Adoption(Pet pet, User user, Date dateDemande, byte validationProfile, byte validationPaiement,
+			Set<Paiement> paiements) {
+		this.pet = pet;
+		this.user = user;
 		this.dateDemande = dateDemande;
 		this.validationProfile = validationProfile;
 		this.validationPaiement = validationPaiement;
@@ -53,32 +54,35 @@ public class Adoption implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idadoption", unique = true, nullable = false)
-	public int getIdadoption() {
+	public Integer getIdadoption() {
 		return this.idadoption;
 	}
 
-	public void setIdadoption(int idadoption) {
+	public void setIdadoption(Integer idadoption) {
 		this.idadoption = idadoption;
 	}
 
-	@Column(name = "iduser", nullable = false)
-	public int getIduser() {
-		return this.iduser;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idpet", nullable = false)
+	public Pet getPet() {
+		return this.pet;
 	}
 
-	public void setIduser(int iduser) {
-		this.iduser = iduser;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
-	@Column(name = "idpet", nullable = false)
-	public int getIdpet() {
-		return this.idpet;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "iduser", nullable = false)
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setIdpet(int idpet) {
-		this.idpet = idpet;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

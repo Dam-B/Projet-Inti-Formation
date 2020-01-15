@@ -1,10 +1,15 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,69 +21,71 @@ import javax.persistence.TemporalType;
 @Table(name = "historique", catalog = "adopt_a_pet")
 public class Historique implements java.io.Serializable {
 
-	private int idhistorique;
-	private int idpet;
-	private int iduser;
-	private int deptid;
+	private Integer idhistorique;
+	private Departement departement;
+	private Pet pet;
+	private User user;
 	private Date debutSejour;
 	private Date finSejour;
 
 	public Historique() {
 	}
 
-	public Historique(int idhistorique, int idpet, int iduser, int deptid, Date debutSejour) {
-		this.idhistorique = idhistorique;
-		this.idpet = idpet;
-		this.iduser = iduser;
-		this.deptid = deptid;
+	public Historique(Departement departement, Pet pet, User user, Date debutSejour) {
+		this.departement = departement;
+		this.pet = pet;
+		this.user = user;
 		this.debutSejour = debutSejour;
 	}
 
-	public Historique(int idhistorique, int idpet, int iduser, int deptid, Date debutSejour, Date finSejour) {
-		this.idhistorique = idhistorique;
-		this.idpet = idpet;
-		this.iduser = iduser;
-		this.deptid = deptid;
+	public Historique(Departement departement, Pet pet, User user, Date debutSejour, Date finSejour) {
+		this.departement = departement;
+		this.pet = pet;
+		this.user = user;
 		this.debutSejour = debutSejour;
 		this.finSejour = finSejour;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idhistorique", unique = true, nullable = false)
-	public int getIdhistorique() {
+	public Integer getIdhistorique() {
 		return this.idhistorique;
 	}
 
-	public void setIdhistorique(int idhistorique) {
+	public void setIdhistorique(Integer idhistorique) {
 		this.idhistorique = idhistorique;
 	}
 
-	@Column(name = "idpet", nullable = false)
-	public int getIdpet() {
-		return this.idpet;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "deptid", nullable = false)
+	public Departement getDepartement() {
+		return this.departement;
 	}
 
-	public void setIdpet(int idpet) {
-		this.idpet = idpet;
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
-	@Column(name = "iduser", nullable = false)
-	public int getIduser() {
-		return this.iduser;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idpet", nullable = false)
+	public Pet getPet() {
+		return this.pet;
 	}
 
-	public void setIduser(int iduser) {
-		this.iduser = iduser;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
-	@Column(name = "deptid", nullable = false)
-	public int getDeptid() {
-		return this.deptid;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "iduser", nullable = false)
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setDeptid(int deptid) {
-		this.deptid = deptid;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -1,5 +1,5 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

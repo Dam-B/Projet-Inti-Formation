@@ -1,11 +1,14 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,12 +19,14 @@ import javax.persistence.Table;
 public class Individual implements java.io.Serializable {
 
 	private IndividualId id;
+	private User user;
 
 	public Individual() {
 	}
 
-	public Individual(IndividualId id) {
+	public Individual(IndividualId id, User user) {
 		this.id = id;
+		this.user = user;
 	}
 
 	@EmbeddedId
@@ -40,6 +45,16 @@ public class Individual implements java.io.Serializable {
 
 	public void setId(IndividualId id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "iduser", nullable = false, insertable = false, updatable = false)
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

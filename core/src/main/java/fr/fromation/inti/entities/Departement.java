@@ -1,9 +1,13 @@
 package fr.fromation.inti.entities;
-// Generated 14 janv. 2020 16:37:00 by Hibernate Tools 5.2.12.Final
+// Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -14,14 +18,29 @@ import javax.persistence.Table;
 public class Departement implements java.io.Serializable {
 
 	private int deptid;
+	private int departementCode;
 	private String name;
+	private Set<Historique> historiques = new HashSet<Historique>(0);
+	private Set<Centre> centres = new HashSet<Centre>(0);
+	private Set<User> users = new HashSet<User>(0);
 
 	public Departement() {
 	}
 
-	public Departement(int deptid, String name) {
+	public Departement(int deptid, int departementCode, String name) {
 		this.deptid = deptid;
+		this.departementCode = departementCode;
 		this.name = name;
+	}
+
+	public Departement(int deptid, int departementCode, String name, Set<Historique> historiques, Set<Centre> centres,
+			Set<User> users) {
+		this.deptid = deptid;
+		this.departementCode = departementCode;
+		this.name = name;
+		this.historiques = historiques;
+		this.centres = centres;
+		this.users = users;
 	}
 
 	@Id
@@ -35,6 +54,15 @@ public class Departement implements java.io.Serializable {
 		this.deptid = deptid;
 	}
 
+	@Column(name = "departement_code", nullable = false)
+	public int getDepartementCode() {
+		return this.departementCode;
+	}
+
+	public void setDepartementCode(int departementCode) {
+		this.departementCode = departementCode;
+	}
+
 	@Column(name = "name", nullable = false, length = 45)
 	public String getName() {
 		return this.name;
@@ -42,6 +70,33 @@ public class Departement implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")
+	public Set<Historique> getHistoriques() {
+		return this.historiques;
+	}
+
+	public void setHistoriques(Set<Historique> historiques) {
+		this.historiques = historiques;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")
+	public Set<Centre> getCentres() {
+		return this.centres;
+	}
+
+	public void setCentres(Set<Centre> centres) {
+		this.centres = centres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")
+	public Set<User> getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }
