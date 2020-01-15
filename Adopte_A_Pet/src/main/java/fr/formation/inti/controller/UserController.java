@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.formation.inti.Iservices.ISecurityService;
+import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.entities.User;
-import fr.formation.inti.services.SecurityService;
-import fr.formation.inti.services.UserService;
 import fr.formation.inti.validation.UserValidator;
 
 @Controller
 public class UserController {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
-    private SecurityService securityService;
+    private ISecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;

@@ -6,13 +6,13 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.entities.User;
-import fr.formation.inti.services.UserService;
 
 @Component
 public class UserValidator implements Validator {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Override
     public boolean supports(Class<?> aClass) {

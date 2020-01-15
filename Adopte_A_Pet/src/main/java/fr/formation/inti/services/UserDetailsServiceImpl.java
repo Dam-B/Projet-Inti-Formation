@@ -12,14 +12,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.formation.inti.dao.UserRepository;
+import fr.formation.inti.dao.IUserRepository;
 import fr.formation.inti.entities.Role;
 import fr.formation.inti.entities.User;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
     @Override
     @Transactional(readOnly = true)

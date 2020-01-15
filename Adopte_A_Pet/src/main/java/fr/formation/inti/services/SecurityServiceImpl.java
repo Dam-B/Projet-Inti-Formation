@@ -10,8 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import fr.formation.inti.Iservices.ISecurityService;
+
 @Service
-public class SecurityServiceImpl implements SecurityService{
+public class SecurityServiceImpl implements ISecurityService{
     @Autowired
     private AuthenticationManager authenticationManager;
 
