@@ -2,9 +2,12 @@ package fr.formation.inti.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import fr.formation.inti.entities.Centre;
+
 public interface ICentreRepository extends JpaRepository<Centre, Long>{
 	
-	void save(Centre centre);
+	@SuppressWarnings("unchecked")
+	Centre save(Centre centre);
 	void update(Centre centre);
 	void delete(long id);
 	

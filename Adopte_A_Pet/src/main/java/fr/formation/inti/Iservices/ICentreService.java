@@ -1,6 +1,6 @@
 package fr.formation.inti.Iservices;
 
-import fr.formation.inti.dao.Centre;
+import fr.formation.inti.entities.Centre;
 
 public interface ICentreService {
 	

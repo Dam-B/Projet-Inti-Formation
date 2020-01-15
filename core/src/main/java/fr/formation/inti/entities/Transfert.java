@@ -1,4 +1,4 @@
-package fr.fromation.inti.entities;
+package fr.formation.inti.entities;
 // Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;

@@ -2,9 +2,10 @@ package fr.formation.inti.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.formation.inti.Iservices.Centre;
+
 import fr.formation.inti.Iservices.ICentreService;
 import fr.formation.inti.dao.ICentreRepository;
+import fr.formation.inti.entities.Centre;
 
 public class CentreServiceImpl implements ICentreService {
 	@Autowired
