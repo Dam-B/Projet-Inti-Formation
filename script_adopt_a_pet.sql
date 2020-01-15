@@ -10,74 +10,59 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema adopt_a_pet
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema adopt_a_pet
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `adopt_a_pet` DEFAULT CHARACTER SET latin1 ;
 USE `adopt_a_pet` ;
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`adoption`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`adoption` (
-  `idadoption` INT NOT NULL,
-  `iduser` INT NOT NULL,
-  `idpet` INT NOT NULL,
-  `date_demande` DATETIME NOT NULL,
-  `validation_profile` TINYINT NOT NULL,
-  `validation_paiement` TINYINT NOT NULL,
+CREATE TABLE `adoption` (
+  `idadoption` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `idpet` int(11) NOT NULL,
+  `date_demande` datetime NOT NULL,
+  `validation_profile` tinyint(4) NOT NULL,
+  `validation_paiement` tinyint(4) NOT NULL,
   PRIMARY KEY (`idadoption`),
-  INDEX `fk_adoption_user1_idx` (`iduser` ASC),
-  INDEX `fk_adoption_pet1_idx` (`idpet` ASC),
-  CONSTRAINT `fk_adoption_user1`
-    FOREIGN KEY (`iduser`)
-    REFERENCES `adopt_a_pet`.`user` (`iduser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_adoption_pet1`
-    FOREIGN KEY (`idpet`)
-    REFERENCES `adopt_a_pet`.`pet` (`idpet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `iduser_user_adoption_idx` (`iduser`),
+  KEY `idpet_pet_adoption_idx` (`idpet`),
+  CONSTRAINT `idpet_pet_adoption` FOREIGN KEY (`idpet`) REFERENCES `pet` (`idpet`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `iduser_user_adoption` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`centre`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`centre` (
-  `iduser` INT(11) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `deptid` INT(11) NOT NULL,
-  `tel` VARCHAR(45) NULL,
-  `city` VARCHAR(45) NULL,
-  `postal_code` VARCHAR(45) NULL,
-  INDEX `fk_centre_user1_idx` (`iduser` ASC),
-  CONSTRAINT `fk_centre_user1`
-    FOREIGN KEY (`iduser`)
-    REFERENCES `adopt_a_pet`.`user` (`iduser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE `centre` (
+  `idcentre` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `deptid` int(11) NOT NULL,
+  `tel` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `postal_code` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idcentre`),
+  KEY `iduser_user_centre_idx` (`iduser`),
+  KEY `deptid_departement_centre_idx` (`deptid`),
+  CONSTRAINT `deptid_departement_centre` FOREIGN KEY (`deptid`) REFERENCES `departement` (`deptid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `iduser_user_centre` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `centre` (`iduser`,`name`,`deptid`,`tel`,`city`,`postal_code`) 
+VALUES ("1","Centre_Normandie","51 ","02 82 23 08 16","Granville","50400"),
+("2","Centre_Ile-de-France","94","01 86 70 43 64","Neuilly-Plaisance","93330"),
+("3","Centre_Haute-Garonne","32","05 38 39 56 74","Toulouse","31100");
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`departement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`departement` (
-  `deptid` INT(11) NOT NULL,
-  `departement_code` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`deptid`),
-  CONSTRAINT `fk_departement_user`
-    FOREIGN KEY (`deptid`)
-    REFERENCES `adopt_a_pet`.`user` (`deptid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE `departement` (
+  `deptid` int(11) NOT NULL,
+  `departement_code` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`deptid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- phpMyAdmin SQL Dump
 -- version 4.0.6deb1
@@ -214,155 +199,145 @@ INSERT INTO `departement` (`deptid`, `departement_code`,`name`) VALUES
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`historique`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`historique` (
-  `idhistorique` INT NOT NULL,
-  `idpet` INT NOT NULL,
-  `iduser` INT NOT NULL,
-  `deptid` INT NOT NULL,
-  `debut_sejour` DATETIME NOT NULL,
-  `fin_sejour` DATETIME NULL,
+CREATE TABLE `historique` (
+  `idhistorique` int(11) NOT NULL AUTO_INCREMENT,
+  `idpet` int(11) NOT NULL,
+  `iduser` int(11) NOT NULL,
+  `deptid` int(11) NOT NULL,
+  `debut_sejour` datetime NOT NULL,
+  `fin_sejour` datetime DEFAULT NULL,
   PRIMARY KEY (`idhistorique`),
-  INDEX `fk_historique_pet1_idx` (`idpet` ASC),
-  INDEX `fk_historique_user1_idx` (`iduser` ASC),
-  CONSTRAINT `fk_historique_pet1`
-    FOREIGN KEY (`idpet`)
-    REFERENCES `adopt_a_pet`.`pet` (`idpet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_historique_user1`
-    FOREIGN KEY (`iduser`)
-    REFERENCES `adopt_a_pet`.`user` (`iduser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `idpet_idx` (`idpet`),
+  KEY `deptid_idx` (`deptid`),
+  KEY `iduser_user_historique_idx` (`iduser`),
+  CONSTRAINT `deptid_departement_historique` FOREIGN KEY (`deptid`) REFERENCES `departement` (`deptid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idpet_pet_historique` FOREIGN KEY (`idpet`) REFERENCES `pet` (`idpet`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `iduser_user_historique` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`individual`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`individual` (
-  `iduser` INT(11) NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
-  `tel` VARCHAR(45) NOT NULL,
-  `adress` VARCHAR(45) NULL DEFAULT NULL,
-  `city` VARCHAR(45) NULL DEFAULT NULL,
-  `postal_code` INT(11) NOT NULL,
-  INDEX `fk_individual_user1_idx` (`iduser` ASC),
-  CONSTRAINT `fk_individual_user1`
-    FOREIGN KEY (`iduser`)
-    REFERENCES `adopt_a_pet`.`user` (`iduser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE `individual` (
+  `iduser` int(11) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `mail` varchar(45) NOT NULL,
+  `tel` varchar(45) NOT NULL,
+  `adress` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `postal_code` int(11) NOT NULL,
+  KEY `iduser_user_individual_idx` (`iduser`),
+  CONSTRAINT `iduser_user_individual` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`paiement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`paiement` (
-  `idpaiement` INT NOT NULL AUTO_INCREMENT,
-  `idadoption` INT NOT NULL,
+CREATE TABLE `paiement` (
+  `idpaiement` int(11) NOT NULL AUTO_INCREMENT,
+  `idadoption` int(11) NOT NULL,
   PRIMARY KEY (`idpaiement`),
-  INDEX `fk_paiement_adoption1_idx` (`idadoption` ASC),
-  CONSTRAINT `fk_paiement_adoption1`
-    FOREIGN KEY (`idadoption`)
-    REFERENCES `adopt_a_pet`.`adoption` (`idadoption`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `adopt_a_pet`.`pet`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`pet` (
-  `idpet` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `race` VARCHAR(45) NULL DEFAULT NULL,
-  `age` VARCHAR(45) NULL DEFAULT NULL,
-  `iduser` INT(11) NULL DEFAULT NULL,
-  `deptid` INT(11) NOT NULL,
-  PRIMARY KEY (`idpet`),
-  INDEX `fk_pet_historique1_idx` (`deptid` ASC),
-  CONSTRAINT `fk_pet_user1`
-    FOREIGN KEY (`idpet`)
-    REFERENCES `adopt_a_pet`.`user` (`idpet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pet_historique1`
-    FOREIGN KEY (`deptid`)
-    REFERENCES `adopt_a_pet`.`historique` (`deptid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pet_departement1`
-    FOREIGN KEY (`deptid`)
-    REFERENCES `adopt_a_pet`.`departement` (`deptid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  KEY `idadoption_adoption_paiement_idx` (`idadoption`),
+  CONSTRAINT `idadoption_adoption_paiement` FOREIGN KEY (`idadoption`) REFERENCES `adoption` (`idadoption`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`title`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`title` (
-  `idtitle` INT NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idtitle`))
-ENGINE = InnoDB;
+CREATE TABLE `title` (
+  `idtitle` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) NOT NULL,
+  PRIMARY KEY (`idtitle`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `title` (`title`) VALUES
+("admin"),("F.A"),("User"),("Centre");
 
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`transfert`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`transfert` (
-  `idtransfert` INT NOT NULL,
-  `idpet` INT NOT NULL,
-  `iduser` INT NOT NULL,
-  `new_id_user` INT NOT NULL,
+CREATE TABLE `transfert` (
+  `idtransfert` int(11) NOT NULL AUTO_INCREMENT,
+  `idpet` int(11) NOT NULL,
+  `iduser` int(11) NOT NULL,
+  `new_id_user` int(11) NOT NULL,
   PRIMARY KEY (`idtransfert`),
-  INDEX `fk_transfert_pet1_idx` (`idpet` ASC),
-  INDEX `fk_transfert_user1_idx` (`iduser` ASC),
-  CONSTRAINT `fk_transfert_pet1`
-    FOREIGN KEY (`idpet`)
-    REFERENCES `adopt_a_pet`.`pet` (`idpet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_transfert_user1`
-    FOREIGN KEY (`iduser`)
-    REFERENCES `adopt_a_pet`.`user` (`iduser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `idpet_pet_transfert_idx` (`idpet`),
+  KEY `iduser_user_transfert_idx` (`iduser`),
+  KEY `newiduser_user_transfert_idx` (`new_id_user`),
+  CONSTRAINT `idpet_pet_transfert` FOREIGN KEY (`idpet`) REFERENCES `pet` (`idpet`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `iduser_user_transfert` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `newiduser_user_transfert` FOREIGN KEY (`new_id_user`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- -----------------------------------------------------
+-- Table `adopt_a_pet`.`categorie`
+-- -----------------------------------------------------
+CREATE TABLE `categorie` (
+  `idcat` int(11) NOT NULL AUTO_INCREMENT,
+  `categorie` varchar(45) NOT NULL,
+  PRIMARY KEY (`idcat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `categorie` (`categorie`) 
+VALUES ("CHIEN"),("CHAT"),("NAC");
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `adopt_a_pet`.`user` (
-  `iduser` INT(11) NOT NULL AUTO_INCREMENT,
-  `idpet` INT(11) NULL DEFAULT NULL,
-  `deptid` INT(11) NOT NULL,
-  `pseudo` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
-  `date_creation` DATETIME NULL,
-  `date_fermeture` DATETIME NULL,
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `idpet` int(11),
+  `deptid` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `idtitle` int(11) NOT NULL,
+  `date_creation` datetime DEFAULT NULL,
+  `date_fermeture` datetime DEFAULT NULL,
   PRIMARY KEY (`iduser`),
-  INDEX `fk_user_title1_idx` (`title` ASC),
-  CONSTRAINT `fk_user_title1`
-    FOREIGN KEY (`title`)
-    REFERENCES `adopt_a_pet`.`title` (`title`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  KEY `idpet_pet_user_idx` (`idpet`),
+  KEY `deptid_departement_user_idx` (`deptid`),
+  KEY `idtitle_title_user_idx` (`idtitle`),
+  CONSTRAINT `deptid_departement_user` FOREIGN KEY (`deptid`) REFERENCES `departement` (`deptid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idpet_pet_user` FOREIGN KEY (`idpet`) REFERENCES `pet` (`idpet`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idtitle_title_user` FOREIGN KEY (`idtitle`) REFERENCES `title` (`idtitle`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `user` (`deptid`,`username`,`password`,`idtitle`) 
+VALUES ("51","C_N","petN2020","4"),
+("94","C_IDF","petIDF2020","4"),
+("32","C_HG","petHG2020","4");
+
 
 USE `adopt_a_pet` ;
+
+-- -----------------------------------------------------
+-- Table `adopt_a_pet`.`pet`
+-- -----------------------------------------------------
+CREATE TABLE `pet` (
+  `idpet` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `idcat` int(11) NOT NULL,
+  `race` varchar(45) DEFAULT NULL,
+  `age` varchar(45) DEFAULT NULL,
+  `iduser` int(11) NOT NULL,
+  `deptid` int(11) NOT NULL,
+  PRIMARY KEY (`idpet`),
+  KEY `idcat_categorie_pet_idx` (`idcat`),
+  KEY `iduser_user_pet_idx` (`iduser`),
+  CONSTRAINT `idcat_categorie_pet` FOREIGN KEY (`idcat`) REFERENCES `categorie` (`idcat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `iduser_user_pet` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `pet` (`name`,`idcat`,`race`,`iduser`, `deptid`) 
+VALUES ("Médor","1","Labrador","1","51"),
+("Capucine","3","Hamster-russe","2","94"),
+("Felix","2","Européen","3","32");
 
 -- -----------------------------------------------------
 -- procedure get_historic
@@ -378,14 +353,14 @@ END$$
 DELIMITER ;
 USE `adopt_a_pet`;
 
-DELIMITER $$
+"DELIMITER $$
 USE `adopt_a_pet`$$
 CREATE DEFINER=`root`@`localhost` TRIGGER user_create_date BEFORE INSERT ON user
-	FOR EACH ROW SET NEW.create_date = NOW()$$
+	FOR EACH ROW SET USER.date_creation = NOW()$$
 
 USE `adopt_a_pet`$$
 CREATE DEFINER=`root`@`localhost` TRIGGER user_delete_date AFTER DELETE ON user
-	FOR EACH ROW SET NEW.create_date = NOW()$$
+	FOR EACH ROW SET USER.date_fermeture = NOW()$$"
 
 
 DELIMITER ;
