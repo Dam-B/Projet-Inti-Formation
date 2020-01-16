@@ -220,6 +220,7 @@ CREATE TABLE `historique` (
 -- Table `adopt_a_pet`.`individual`
 -- -----------------------------------------------------
 CREATE TABLE `individual` (
+  `idindvidual` INT(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
@@ -228,6 +229,7 @@ CREATE TABLE `individual` (
   `adress` varchar(45) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
   `postal_code` int(11) NOT NULL,
+  PRIMARY KEY (`idindvidual`),
   KEY `iduser_user_individual_idx` (`iduser`),
   CONSTRAINT `iduser_user_individual` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
