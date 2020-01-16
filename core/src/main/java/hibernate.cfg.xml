@@ -10,16 +10,16 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="fr.fromation.inti.entities.Adoption"/>
-        <mapping class="fr.fromation.inti.entities.Paiement"/>
-        <mapping class="fr.fromation.inti.entities.Categorie"/>
-        <mapping class="fr.fromation.inti.entities.Pet"/>
-        <mapping class="fr.fromation.inti.entities.Title"/>
-        <mapping class="fr.fromation.inti.entities.Individual"/>
-        <mapping class="fr.fromation.inti.entities.Historique"/>
-        <mapping class="fr.fromation.inti.entities.Departement"/>
-        <mapping class="fr.fromation.inti.entities.User"/>
-        <mapping class="fr.fromation.inti.entities.Centre"/>
-        <mapping class="fr.fromation.inti.entities.Transfert"/>
+        <mapping class="fr.fromation.inti.Adoption"/>
+        <mapping class="fr.fromation.inti.Paiement"/>
+        <mapping class="fr.fromation.inti.Categorie"/>
+        <mapping class="fr.fromation.inti.Pet"/>
+        <mapping class="fr.fromation.inti.Title"/>
+        <mapping class="fr.fromation.inti.Individual"/>
+        <mapping class="fr.fromation.inti.Historique"/>
+        <mapping class="fr.fromation.inti.Departement"/>
+        <mapping class="fr.fromation.inti.User"/>
+        <mapping class="fr.fromation.inti.Centre"/>
+        <mapping class="fr.fromation.inti.Transfert"/>
     </session-factory>
 </hibernate-configuration>

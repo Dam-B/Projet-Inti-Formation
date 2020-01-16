@@ -1,12 +1,12 @@
 package fr.formation.inti.Iservices;
 
-import fr.formation.inti.entities.Individual;
+import fr.formation.inti.entities.IndividualId;
 
 public interface IIndividualsService {
-	void save(Individual centre);
-	void update(Individual centre);
+	void save(IndividualId centre);
+	void update(IndividualId centre);
 	void delete(long id);
 	
-	Individual findByIduser(String iduser);
-	Individual findByIddept(String iddept);
+	IndividualId findByIduser(String iduser);
+	IndividualId findByIddept(String iddept);
 }
