@@ -1,6 +1,6 @@
 package fr.formation.inti.services;
 
-import java.util.HashSet;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +23,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<>(titleRepository.findAll()));
         userRepository.save(user);
     }
 
@@ -35,21 +34,18 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void update(User user) {
 		String password = user.getPassword();
-		String passwordConfirm = user.getPasswordConfirm();
 		String username = user.getUsername();
-		long id = user.getId();
-		userRepository.findById(id);
-		user.setPassword(password);
-		user.setPasswordConfirm(passwordConfirm);
-		user.setUsername(username);
-		
-		
+		Integer id = user.getIduser();
+		User userDeBase = userRepository.findByIduser(Integer.toString(id));
+		userDeBase.setPassword(password);
+		userDeBase.setUsername(username);
+		userRepository.save(userDeBase);
+
 	}
 
 	@Override
 	public void delete(long id) {
-		userRepository.deleteById(id);
-		
+		userRepository.deleteById(id);		
 	}
 
 	@Override
@@ -57,14 +53,14 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.findByIduser(iduser);
 	}
 
-//	@Override
-//	public User findByIdtitle(String idtitle) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public User findByIdpet(String idpet) {
 		return userRepository.findByIduser(idpet);
+	}
+
+	@Override
+	public User findByIdtitle(String idtitle) {
+		return userRepository.findByIdtitle(idtitle);
 	}
 }

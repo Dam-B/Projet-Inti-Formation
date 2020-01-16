@@ -31,7 +31,6 @@ public class CentreServiceImpl implements ICentreService {
 
 	@Override
 	public Centre findByIduser(String iduser) {
-
 		return centreRepository.findByIduser(iduser);
 	}
 

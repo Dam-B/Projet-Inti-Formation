@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<table catalog="adopt_a_pet" name="adoption">
+		<column name="idadoption"></column>
+		<column name="idpet"></column>
+		<column name="validation_paiement"></column>
+		<column name="iduser"></column>
+		<column name="date_demande"></column>
+		<column name="validation_profile"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="categorie">
+		<column name="idcat"></column>
+		<column name="categorie"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="centre">
+		<column name="idcentre"></column>
+		<column name="name"></column>
+		<column name="deptid"></column>
+		<column name="iduser"></column>
+		<column name="tel"></column>
+		<column name="postal_code"></column>
+		<column name="city"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="departement">
+		<column name="deptid"></column>
+		<column name="name"></column>
+		<column name="departement_code"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="historique">
+		<column name="idhistorique"></column>
+		<column name="deptid"></column>
+		<column name="iduser"></column>
+		<column name="debut_sejour"></column>
+		<column name="fin_sejour"></column>
+		<column name="idpet"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="individual">
+		<column name="first_name"></column>
+		<column name="last_name"></column>
+		<column name="iduser"></column>
+		<column name="adress"></column>
+		<column name="postal_code"></column>
+		<column name="mail"></column>
+		<column name="city"></column>
+		<column name="tel"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="paiement">
+		<column name="idpaiement"></column>
+		<column name="idadoption"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="pet">
+		<column name="idpet"></column>
+		<column name="deptid"></column>
+		<column name="idcat"></column>
+		<column name="age"></column>
+		<column name="iduser"></column>
+		<column name="race"></column>
+		<column name="name"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="title">
+		<column name="idtitle"></column>
+		<column name="title"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="transfert">
+		<column name="idtransfert"></column>
+		<column name="idpet"></column>
+		<column name="iduser"></column>
+		<column name="new_id_user"></column>
+	</table>
+	<table catalog="adopt_a_pet" name="user">
+		<column name="iduser"></column>
+		<column name="date_fermeture"></column>
+		<column name="password"></column>
+		<column name="deptid"></column>
+		<column name="date_creation"></column>
+		<column name="username"></column>
+		<column name="idpet"></column>
+		<column name="idtitle"></column>
+	</table>
+</hibernate-reverse-engineering>

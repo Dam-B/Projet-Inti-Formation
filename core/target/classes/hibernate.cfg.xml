@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/adopt_a_pet</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping class="fr.fromation.inti.entities.Adoption"/>
+        <mapping class="fr.fromation.inti.entities.Paiement"/>
+        <mapping class="fr.fromation.inti.entities.Categorie"/>
+        <mapping class="fr.fromation.inti.entities.Pet"/>
+        <mapping class="fr.fromation.inti.entities.Title"/>
+        <mapping class="fr.fromation.inti.entities.Individual"/>
+        <mapping class="fr.fromation.inti.entities.Historique"/>
+        <mapping class="fr.fromation.inti.entities.Departement"/>
+        <mapping class="fr.fromation.inti.entities.User"/>
+        <mapping class="fr.fromation.inti.entities.Centre"/>
+        <mapping class="fr.fromation.inti.entities.Transfert"/>
+    </session-factory>
+</hibernate-configuration>

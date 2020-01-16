@@ -9,6 +9,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     User findByIduser(String iduser);
 //    User findByIdtitle(String idtitle);
     User findByIdpet(String idpet);
+    User findByIdtitle(String idtitle);
     //Find by ID
     //Find by titleid
     //Find by idpet

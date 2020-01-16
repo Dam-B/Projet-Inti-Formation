@@ -8,5 +8,5 @@ public interface ITitleService {
 	void delete(Title title);
 	
 	
-	String findByIdtitle(Integer idtitle);
+	Title findByIdtitle(String idtitle);
 }
