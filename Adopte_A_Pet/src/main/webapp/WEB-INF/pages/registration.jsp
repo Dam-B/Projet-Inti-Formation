@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../resources/vendor/nouislider/nouislider.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="../../resources/css/style2.css">
 </head>
 <body>
 
