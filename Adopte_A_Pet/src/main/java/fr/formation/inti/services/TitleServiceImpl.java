@@ -19,7 +19,7 @@ public class TitleServiceImpl implements ITitleService {
 
 	@Override
 	public void update(Title title) {
-		String newTitleName = title.getTitle();;
+		String newTitleName = title.getTitle();
 		Title tl2 = titleRepository.findByIdtitle(Integer.toString(title.getIdtitle()));
 		tl2.setTitle(newTitleName);
 		

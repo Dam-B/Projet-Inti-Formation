@@ -1,6 +1,7 @@
 package fr.formation.inti.services;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.formation.inti.dao.ITitleRepository;
 import fr.formation.inti.dao.IUserRepository;
 import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
@@ -20,16 +22,20 @@ import fr.formation.inti.entities.User;
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private IUserRepository userRepository;
+    @Autowired
+    private ITitleRepository titleRepository;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
+        List<Title> title = titleRepository.findAll();
+        
         if (user == null) throw new UsernameNotFoundException(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Title title : user.getTitle()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(title.getName()));
+        for (Title title1 : title){
+            grantedAuthorities.add(new SimpleGrantedAuthority(title1.getTitle()));
         }
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);

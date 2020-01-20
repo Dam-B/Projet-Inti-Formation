@@ -12,7 +12,7 @@ import fr.formation.inti.services.EmployeeServiceImpl;
 @Component
 public class FormValidator {
 	@Autowired
-	private EmployeeServiceImpl emp;
+	private Inddivi emp;
 
 	// common-validator library.
 	private EmailValidator emailValidator = EmailValidator.getInstance();
