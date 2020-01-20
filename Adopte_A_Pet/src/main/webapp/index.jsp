@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Bell Bootstrap 4 Theme</title>
+<title>Adopt A Pet</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -90,20 +90,31 @@
 					<li><a href="#about">About Us</a></li>
 					<li><a href="#portfolio">Our Pets</a></li>
 					<li><a href="#team">Our Team</a></li>
-					<li class="menu-has-children"><a href="">Drop Down</a>
+					<li class="menu-has-children"><a href="">More Options</a>
 						<ul>
-							<li><a href="#">Drop Down 1</a></li>
-							<li class="menu-has-children"><a href="#">Drop Down 2</a>
+							<li class="menu-has-children"><a href="#">Go directly to
+									:</a>
 								<ul>
-									<li><a href="#">Deep Drop Down 1</a></li>
-									<li><a href="#">Deep Drop Down 2</a></li>
-									<li><a href="#">Deep Drop Down 3</a></li>
-									<li><a href="#">Deep Drop Down 4</a></li>
-									<li><a href="#">Deep Drop Down 5</a></li>
+									<li><a href="#">Dogs Category</a></li>
+									<li><a href="#">Cats Category</a></li>
+									<li><a href="#">Rodents Category</a></li>
+									<li><a href="#">Exotic Pets Category</a></li>
+									<li><a href="#">All Categories</a></li>
 								</ul></li>
-							<li><a href="#">Drop Down 3</a></li>
-							<li><a href="#">Drop Down 4</a></li>
-							<li><a href="#">Drop Down 5</a></li>
+							<li><a href="#">Admin options : <!-- ici chercher comment cacher et afficher des menus si admin --></a>
+								<ul>
+									<li><a href="#">Manage Pets</a></li>
+									<li><a href="#">Manage Users</a></li>
+									<li><a href="#">Manage transfer forms</a></li>
+									<li><a href="#">Manage adoption forms</a></li>
+								</ul></li>
+							<li><a href="#">Host Family options : <!-- ici chercher comment cacher et afficher des menus si FA --></a>
+								<ul>
+									<li><a href="#">Manage Pets</a></li>
+									<li><a href="#">Create transfer forms</a></li>
+									<li><a href="#">Manage adoption forms</a></li>
+								</ul></li>
+							<li><a href="#">I want to become an adopter</a></li>
 						</ul></li>
 					<li><a href="#contact">Contact Us</a></li>
 				</ul>
@@ -232,6 +243,20 @@
 							</div></a>
 					</div>
 				</div>
+
+				<div class="col-lg-3 col-sm-6 col-xs-12">
+					<div class="card card-block">
+						<a href="#"><img alt="" src="resources/img/all.jpg">
+							<div class="portfolio-over">
+								<div>
+									<h3 class="card-title">All Categories</h3>
+
+									<p class="card-text">See all our Pets</p>
+								</div>
+							</div></a>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>
@@ -246,19 +271,17 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="card card-block">
 						<a href="#"><img alt="" class="team-img"
-							src="resources/img/team-1.jpg">
+							src="resources/img/damien.jpg">
 							<div class="card-title-wrap">
-								<span class="card-title">Sergio Fez</span> <span
-									class="card-text">Art Director</span>
+								<span class="card-title">Damien Bertinaria</span> <span
+									class="card-text">President</span>
 							</div>
 
 							<div class="team-over">
-								<h4 class="hidden-md-down">Connect with me</h4>
+								<h4 class="hidden-md-down">Find me on social media</h4>
 
 								<nav class="social-nav">
-									<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-										class="fa fa-facebook"></i></a> <a href="#"><i
-										class="fa fa-linkedin"></i></a> <a href="#"><i
+									<a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i
 										class="fa fa-envelope"></i></a>
 								</nav>
 
@@ -271,69 +294,17 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="card card-block">
 						<a href="#"><img alt="" class="team-img"
-							src="resources/img/team-2.jpg">
+							src="resources/img/nina.jpg">
 							<div class="card-title-wrap">
-								<span class="card-title">Sergio Fez</span> <span
-									class="card-text">Art Director</span>
+								<span class="card-title">Nina Chrétien</span> <span
+									class="card-text">President</span>
 							</div>
 
 							<div class="team-over">
-								<h4 class="hidden-md-down">Connect with me</h4>
+								<h4 class="hidden-md-down">Find me on social media</h4>
 
 								<nav class="social-nav">
-									<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-										class="fa fa-facebook"></i></a> <a href="#"><i
-										class="fa fa-linkedin"></i></a> <a href="#"><i
-										class="fa fa-envelope"></i></a>
-								</nav>
-
-								<p>Lorem ipsum dolor sit amet, eu sed suas eruditi
-									honestatis.</p>
-							</div> </a>
-					</div>
-				</div>
-
-				<div class="col-sm-3 col-xs-6">
-					<div class="card card-block">
-						<a href="#"><img alt="" class="team-img"
-							src="resources/img/team-3.jpg">
-							<div class="card-title-wrap">
-								<span class="card-title">Sergio Fez</span> <span
-									class="card-text">Art Director</span>
-							</div>
-
-							<div class="team-over">
-								<h4 class="hidden-md-down">Connect with me</h4>
-
-								<nav class="social-nav">
-									<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-										class="fa fa-facebook"></i></a> <a href="#"><i
-										class="fa fa-linkedin"></i></a> <a href="#"><i
-										class="fa fa-envelope"></i></a>
-								</nav>
-
-								<p>Lorem ipsum dolor sit amet, eu sed suas eruditi
-									honestatis.</p>
-							</div> </a>
-					</div>
-				</div>
-
-				<div class="col-sm-3 col-xs-6">
-					<div class="card card-block">
-						<a href="#"><img alt="" class="team-img"
-							src="resources/img/team-4.jpg">
-							<div class="card-title-wrap">
-								<span class="card-title">Sergio Fez</span> <span
-									class="card-text">Art Director</span>
-							</div>
-
-							<div class="team-over">
-								<h4 class="hidden-md-down">Connect with me</h4>
-
-								<nav class="social-nav">
-									<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-										class="fa fa-facebook"></i></a> <a href="#"><i
-										class="fa fa-linkedin"></i></a> <a href="#"><i
+									<a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i
 										class="fa fa-envelope"></i></a>
 								</nav>
 
@@ -344,6 +315,7 @@
 				</div>
 			</div>
 		</div>
+
 	</section>
 	<!-- /Team -->
 	<!-- @component: footer -->
@@ -362,18 +334,18 @@
 						<div>
 							<i class="fa fa-map-marker"></i>
 							<p>
-								A108 Adam Street<br>New York, NY 535022
+								33 Avenue du Maine<br>Paris, 75014
 							</p>
 						</div>
 
 						<div>
 							<i class="fa fa-envelope"></i>
-							<p>info@example.com</p>
+							<p>adoptapet@gmail.com</p>
 						</div>
 
 						<div>
 							<i class="fa fa-phone"></i>
-							<p>+1 5589 55488 55s</p>
+							<p>+33 XX XX XX XX</p>
 						</div>
 
 					</div>
@@ -381,7 +353,8 @@
 
 				<div class="col-lg-5 col-md-8">
 					<div class="form">
-						<div id="sendmessage">Your message has been sent. Thank you!</div>
+						<div id="sendmessage">Your message has been sent. Thank you!
+							We will give you an answer in the best delays</div>
 						<div id="errormessage"></div>
 						<form action="" method="post" role="form" class="contactForm">
 							<div class="form-group">
@@ -397,9 +370,16 @@
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="subject"
-									id="subject" placeholder="Subject" data-rule="minlen:4"
-									data-msg="Please enter at least 8 chars of subject" />
+								<select name="type" class="form-control" name="subject"
+									id="subject">
+									<option>Please choose the subject of your mail :</option>
+									<option value="pet">Informations about a pet</option>
+									<option value="host_fa">I want to be a Host Family</option>
+									<option value="adoption">I have a pet to be adopted</option>
+									<option value="center">Add a center to the list of
+										partner centers</option>
+									<option value="other">Other Reasons</option>
+								</select>
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
@@ -425,7 +405,7 @@
 				<div class="row">
 
 					<div class="col-lg-6 col-xs-12 text-lg-left text-center">
-						<p class="copyright-text">Â© BELL Theme</p>
+						<p class="copyright-text">BELL Theme</p>
 						<div class="credits">
 							<!--
                 All the links in the footer should remain intact.
@@ -439,17 +419,14 @@
 
 					<div class="col-lg-6 col-xs-12 text-lg-right text-center">
 						<ul class="list-inline">
-							<li class="list-inline-item"><a href="index.html">Home</a></li>
+							<li class="list-inline-item"><a href="index.jsp">Home</a></li>
 
 							<li class="list-inline-item"><a href="#about">About Us</a></li>
 
-							<li class="list-inline-item"><a href="#features">Features</a>
-							</li>
+							<li class="list-inline-item"><a href="#portfolio">Our
+									pets</a></li>
 
-							<li class="list-inline-item"><a href="#portfolio">Portfolio</a>
-							</li>
-
-							<li class="list-inline-item"><a href="#team">Team</a></li>
+							<li class="list-inline-item"><a href="#team">Our Team</a></li>
 
 							<li class="list-inline-item"><a href="#contact">Contact</a>
 							</li>
