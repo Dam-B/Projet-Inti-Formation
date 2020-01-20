@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="tg" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +97,7 @@
 					<li><a href="#about">About Us</a></li>
 					<li><a href="#portfolio">Our Pets</a></li>
 					<li><a href="#team">Our Team</a></li>
-					<li class="menu-has-children"><a href="">More Options</a>
+					<li class="menu-has-children"><a href="#">More Options</a>
 						<ul>
 							<li class="menu-has-children"><a href="#">Go directly to
 									:</a>
@@ -296,7 +303,7 @@
 						<a href="#"><img alt="" class="team-img"
 							src="resources/img/nina.jpg">
 							<div class="card-title-wrap">
-								<span class="card-title">Nina Chrétien</span> <span
+								<span class="card-title">Nina ChrÃ©tien</span> <span
 									class="card-text">President</span>
 							</div>
 
@@ -419,7 +426,7 @@
 
 					<div class="col-lg-6 col-xs-12 text-lg-right text-center">
 						<ul class="list-inline">
-							<li class="list-inline-item"><a href="index.jsp">Home</a></li>
+							<li class="list-inline-item"><a href="#">Home</a></li>
 
 							<li class="list-inline-item"><a href="#about">About Us</a></li>
 
