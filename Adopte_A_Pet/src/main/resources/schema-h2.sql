@@ -210,3 +210,9 @@ FOREIGN KEY (iduser)
 REFERENCES user (iduser)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
+ALTER TABLE `adopt_a_pet`.`pet` 
+ADD CONSTRAINT `deptid_departement_pet`
+  FOREIGN KEY (`deptid`)
+  REFERENCES `adopt_a_pet`.`departement` (`deptid`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

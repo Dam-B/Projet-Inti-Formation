@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,7 +33,7 @@ public class Pet implements java.io.Serializable {
 	private String name;
 	private String race;
 	private String age;
-	private int deptid;
+	private Departement departement;
 	private Set<Transfert> transferts = new HashSet<Transfert>(0);
 	private Set<User> users = new HashSet<User>(0);
 	private Set<Historique> historiques = new HashSet<Historique>(0);
@@ -41,21 +42,21 @@ public class Pet implements java.io.Serializable {
 	public Pet() {
 	}
 
-	public Pet(Categorie categorie, User user, String name, int deptid) {
+	public Pet(Categorie categorie, User user, String name, Departement departement) {
 		this.categorie = categorie;
 		this.user = user;
 		this.name = name;
-		this.deptid = deptid;
+		this.departement = departement;
 	}
 
-	public Pet(Categorie categorie, User user, String name, String race, String age, int deptid,
+	public Pet(Categorie categorie, User user, String name, String race, String age, Departement departement,
 			Set<Transfert> transferts, Set<User> users, Set<Historique> historiques, Set<Adoption> adoptions) {
 		this.categorie = categorie;
 		this.user = user;
 		this.name = name;
 		this.race = race;
 		this.age = age;
-		this.deptid = deptid;
+		this.departement = departement;
 		this.transferts = transferts;
 		this.users = users;
 		this.historiques = historiques;
@@ -121,13 +122,14 @@ public class Pet implements java.io.Serializable {
 		this.age = age;
 	}
 
-	@Column(name = "deptid", nullable = false)
-	public int getDeptid() {
-		return this.deptid;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "deptid", nullable = false)
+	public Departement getDepartement() {
+		return this.departement;
 	}
 
-	public void setDeptid(int deptid) {
-		this.deptid = deptid;
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pet")
