@@ -1,11 +1,3 @@
-
-
-INSERT INTO centre (name,deptid,tel,city,postal_code) 
-VALUES ('Centre_Normandie','51 ','02 82 23 08 16','Granville','50400'),
-('Centre_Ile-de-France','94','01 86 70 43 64','Neuilly-Plaisance','93330'),
-('Centre_Haute-Garonne','32','05 38 39 56 74','Toulouse','31100');
-
-
 INSERT INTO departement (departement_code,name) VALUES
 ('01', 'Ain'),
 ( '02', 'Aisne'),
@@ -121,6 +113,11 @@ INSERT INTO user (deptid,username,password,idtitle)
 VALUES ('51','C_N','petN2020','4'),
 ('94','C_IDF','petIDF2020','4'),
 ('32','C_HG','petHG2020','4');
+
+INSERT INTO centre (name,deptid,tel,city,postal_code) 
+VALUES ('Centre_Normandie','51 ','02 82 23 08 16','Granville','50400'),
+('Centre_Ile-de-France','94','01 86 70 43 64','Neuilly-Plaisance','93330'),
+('Centre_Haute-Garonne','32','05 38 39 56 74','Toulouse','31100');
 
 
 INSERT INTO pet (name,idcat,race,iduser, deptid) 
