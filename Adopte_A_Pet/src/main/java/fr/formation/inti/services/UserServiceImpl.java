@@ -56,7 +56,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User findByIdpet(String idpet) {
-		return userRepository.findByIduser(idpet);
+		return userRepository.findByIdpet(idpet);
 	}
 
 	@Override

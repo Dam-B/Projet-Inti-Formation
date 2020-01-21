@@ -203,7 +203,7 @@ public class User implements java.io.Serializable {
 		this.adoptions = adoptions;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@Column(name = "centre")
 	public Centre getCentres() {
 		return this.centres;
