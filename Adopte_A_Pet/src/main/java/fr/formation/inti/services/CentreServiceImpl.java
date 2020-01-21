@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.formation.inti.Iservices.ICentreService;
 import fr.formation.inti.dao.ICentreRepository;
 import fr.formation.inti.entities.Centre;
+import fr.formation.inti.entities.Departement;
+import fr.formation.inti.entities.User;
 
 public class CentreServiceImpl implements ICentreService {
 	@Autowired
@@ -24,19 +26,23 @@ public class CentreServiceImpl implements ICentreService {
 	}
 
 	@Override
-	public void delete(long id) {
-		centreRepository.delete(id);
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Centre findByIduser(String iduser) {
-		return centreRepository.findByIduser(iduser);
+	public Centre findByUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Centre findByIddept(String iddept) {
-		return centreRepository.findByIddept(iddept);
+	public Centre findByDepartement(Departement dept) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
 
 }

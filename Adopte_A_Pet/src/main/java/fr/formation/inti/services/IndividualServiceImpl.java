@@ -1,5 +1,7 @@
 package fr.formation.inti.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,30 +21,29 @@ public class IndividualServiceImpl implements IIndividualsService {
 
 	@Override
 	public void update(Individual centre) {
-		// TODO Auto-generated method stub
+		individualRepository.save(centre);
 		
 	}
 
 	@Override
 	public void delete(Integer id) {
-		individualRepository.delete(id);
+		individualRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public Individual findByIduser(Integer iduser) {
-		return individualRepository.findByIduser(iduser);
-	}
-
-	@Override
-	public Individual findByIddept(Integer iddept) {
-		return individualRepository.findByIddept(iddept);
+	public Optional<Individual> findByIduser(Integer iduser) {
+		// TODO Auto-generated method stub
+		return individualRepository.findById(iduser);
 	}
 
 	@Override
 	public Individual findByMail(String mail) {
+		// TODO Auto-generated method stub
 		return individualRepository.findByMail(mail);
 	}
+
+
 	
 	
 }

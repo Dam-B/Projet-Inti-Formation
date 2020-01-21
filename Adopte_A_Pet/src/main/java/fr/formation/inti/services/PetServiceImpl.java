@@ -36,17 +36,17 @@ public class PetServiceImpl implements IPetService {
 		Adoption adoption = (Adoption) pet.getAdoptions();
 		String age = pet.getAge();
 		Categorie categorie = pet.getCategorie();
-		int deptId = pet.getDeptid();
+		Departement dept = pet.getDepartement();
 		Historique histo = (Historique) pet.getHistoriques();
 		Transfert transfert = (Transfert) pet.getTransferts();
-		User user = userRepository.findByIduser(Integer.toString(pet.getUser().getIduser()));
+		User user = userRepository.findByIduser(pet.getUser().getIduser());
 		
-		Pet petDeBase = petRepository.findByIdpet(Integer.toString(pet.getIdpet()));
+		Pet petDeBase = petRepository.findByIdpet(pet.getIdpet());
 		
 		petDeBase.setAdoptions((Set<Adoption>) adoption);
 		petDeBase.setAge(age);
 		petDeBase.setCategorie(categorie);
-		petDeBase.setDeptid(deptId);
+		petDeBase.setDepartement(dept);
 		petDeBase.setHistoriques((Set<Historique>) histo);
 		petDeBase.setTransferts((Set<Transfert>) transfert);
 		petDeBase.setUser(user);
@@ -62,25 +62,25 @@ public class PetServiceImpl implements IPetService {
 	}
 
 	@Override
-	public Pet findByDeptid(Integer iddept) {
-		return petRepository.findBydeptid(iddept);
+	public Pet findByDepartement(Departement dept) {
+		return petRepository.findByDepartement(dept);
 	}
 
 	@Override
-	public Pet findByIduser(User iduser) {
-		return null;
+	public Pet findByUser(User user) {
+		return petRepository.findByUser(user);
 	}
 
 	@Override
 	public Pet findByCategorie(Categorie categorie) {
 		// TODO Auto-generated method stub
-		return null;
+		return petRepository.findByCategorie(categorie);
 	}
 
 	@Override
 	public Pet findByIdpet(Integer idpet) {
 		// TODO Auto-generated method stub
-		return null;
+		return petRepository.findByIdpet(idpet);
 	}
 
 	

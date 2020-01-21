@@ -1,5 +1,7 @@
 package fr.formation.inti.Iservices;
 
+import java.util.Optional;
+
 import fr.formation.inti.entities.Individual;
 
 public interface IIndividualsService {
@@ -7,7 +9,6 @@ public interface IIndividualsService {
 	void update(Individual centre);
 	void delete(Integer id);
 	
-	Individual findByIduser(Integer iduser);
-	Individual findByIddept(Integer iddept);
+	Optional<Individual> findByIduser(Integer iduser);
 	Individual findByMail(String mail);
 }

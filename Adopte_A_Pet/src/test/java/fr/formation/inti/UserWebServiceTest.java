@@ -67,7 +67,7 @@ public class UserWebServiceTest  {
 	@Test
 	public void testSaveGetUpdateDeleteUser() {
 		Departement dept = deptService.findByDeptid(1);
-		Title title = titleService.findByIdtitle("1");
+		Title title = titleService.findByIdtitle(1);
 		user= new User(dept, title, "Dam", "123456");
 		try {
 			// Save

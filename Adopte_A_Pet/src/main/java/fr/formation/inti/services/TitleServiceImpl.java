@@ -20,21 +20,21 @@ public class TitleServiceImpl implements ITitleService {
 	@Override
 	public void update(Title title) {
 		String newTitleName = title.getTitle();
-		Title tl2 = titleRepository.findByIdtitle(Integer.toString(title.getIdtitle()));
+		Title tl2 = titleRepository.findByIdtitle(title.getIdtitle());
 		tl2.setTitle(newTitleName);
 		
 		
 	}
 
 	@Override
-	public void delete(Title title) {
-		Title tl2 = titleRepository.findByIdtitle(Integer.toString(title.getIdtitle()));
-		titleRepository.delete(title);
+	public void delete(Integer idtitle) {
+		Title tl2 = titleRepository.findByIdtitle(idtitle);
+		titleRepository.delete(tl2);
 		
 	}
 
 	@Override
-	public Title findByIdtitle(String idtitle) {		
+	public Title findByIdtitle(Integer idtitle) {		
 		return titleRepository.findByIdtitle(idtitle);
 	}
 	

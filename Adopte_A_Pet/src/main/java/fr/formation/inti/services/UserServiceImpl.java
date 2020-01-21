@@ -1,22 +1,19 @@
 package fr.formation.inti.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.formation.inti.Iservices.IUserService;
-import fr.formation.inti.dao.ITitleRepository;
 import fr.formation.inti.dao.IUserRepository;
+import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
 
 @Service
 public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserRepository userRepository;
-    @Autowired
-    private ITitleRepository titleRepository;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -51,6 +48,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User findByIduser(Integer iduser) {
 		return userRepository.findByIduser(iduser);
+	}
+
+	@Override
+	public User findByTitle(Title title) {
+		return userRepository.findByTitle(title);
 	}
 
 
