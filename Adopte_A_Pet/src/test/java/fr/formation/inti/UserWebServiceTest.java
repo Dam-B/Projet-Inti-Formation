@@ -81,11 +81,11 @@ public class UserWebServiceTest  {
 			System.out.println("JUNIT Save User () with new ID "+ user.getIduser());
 			assertTrue(true);
 			// Find
-			userFindById = userService.findByIduser("1");
+			userFindById = userService.findByUsername("C_N");
 			System.out.println("JUNIT Find By ID () with ID "+ userFindById.getIduser() + " and Name " + userFindById.getUsername());
 			assertTrue(true);
 			// Update
-			userUpdate = userFindById;
+			userUpdate = user;
 			userUpdate.setUsername("Test Junit Update");
 			System.out.println("JUNIT Update User () with ID "+ userUpdate.getIduser() + " \n new Username : "+ userUpdate.getUsername());
 			assertTrue(true);

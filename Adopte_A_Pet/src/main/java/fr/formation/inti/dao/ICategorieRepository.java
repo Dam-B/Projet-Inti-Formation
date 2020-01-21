@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import fr.formation.inti.entities.Categorie;
 
 
-public interface ICategorieRepository extends JpaRepository<Categorie, Long> {
+public interface ICategorieRepository extends JpaRepository<Categorie, Integer> {
     
 }

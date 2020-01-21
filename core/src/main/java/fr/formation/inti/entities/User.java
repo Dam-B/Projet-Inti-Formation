@@ -176,7 +176,6 @@ public class User implements java.io.Serializable {
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@Column(name = "individual")
 	public Individual getIndividuals() {
 		return this.individuals;
 	}
@@ -204,7 +203,7 @@ public class User implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "centre")
+	@JoinColumn(name = "centre")
 	public Centre getCentres() {
 		return this.centres;
 	}

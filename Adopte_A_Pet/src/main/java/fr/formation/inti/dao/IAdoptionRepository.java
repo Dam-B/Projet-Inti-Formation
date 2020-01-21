@@ -8,7 +8,7 @@ import fr.formation.inti.entities.Adoption;
 
 
 
-public interface IAdoptionRepository extends JpaRepository<Adoption, Long>{
+public interface IAdoptionRepository extends JpaRepository<Adoption, Integer>{
 //find by userID
 //find by adoption ID
 //find by pet ID

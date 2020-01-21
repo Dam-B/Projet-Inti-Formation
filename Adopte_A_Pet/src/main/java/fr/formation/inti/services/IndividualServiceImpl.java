@@ -1,15 +1,12 @@
 package fr.formation.inti.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
-import fr.formation.inti.Iservices.ICentreService;
 import fr.formation.inti.Iservices.IIndividualsService;
-import fr.formation.inti.dao.ICentreRepository;
 import fr.formation.inti.dao.IIndividualRepository;
-import fr.formation.inti.entities.Centre;
 import fr.formation.inti.entities.Individual;
-
+@Service
 public class IndividualServiceImpl implements IIndividualsService {
 	@Autowired
 	private IIndividualRepository individualRepository;
@@ -27,18 +24,18 @@ public class IndividualServiceImpl implements IIndividualsService {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Integer id) {
 		individualRepository.delete(id);
 		
 	}
 
 	@Override
-	public Individual findByIduser(String iduser) {
+	public Individual findByIduser(Integer iduser) {
 		return individualRepository.findByIduser(iduser);
 	}
 
 	@Override
-	public Individual findByIddept(String iddept) {
+	public Individual findByIddept(Integer iddept) {
 		return individualRepository.findByIddept(iddept);
 	}
 

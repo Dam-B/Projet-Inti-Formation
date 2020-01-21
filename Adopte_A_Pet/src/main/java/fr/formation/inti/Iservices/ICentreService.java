@@ -6,8 +6,8 @@ public interface ICentreService {
 	
 	void save(Centre centre);
 	void update(Centre centre);
-	void delete(long id);
+	void delete(Integer id);
 	
-	Centre findByIduser(String iduser);
-	Centre findByIddept(String iddept);
+	Centre findByIduser(Integer iduser);
+	Centre findByIddept(Integer iddept);
 }

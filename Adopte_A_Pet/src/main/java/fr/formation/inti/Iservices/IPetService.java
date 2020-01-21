@@ -1,16 +1,19 @@
 package fr.formation.inti.Iservices;
 
+import fr.formation.inti.entities.Categorie;
+import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.Pet;
+import fr.formation.inti.entities.User;
 
 
 public interface IPetService {
 	
     void save(Pet pet);
     void update(Pet pet);
-    void delete(long id);
+    void delete(Integer id);
     
-    Pet findByIddept(String iddept);
-    Pet findByIduser(String iduser);
-    Pet findByCategorie(String categorie);
-    Pet findByIdpet(String idpet);
+    Pet findByDepartement(Departement dept);
+    Pet findByUser(User user);
+    Pet findByCategorie(Categorie categorie);
+    Pet findByIdpet(Integer idpet);
 }

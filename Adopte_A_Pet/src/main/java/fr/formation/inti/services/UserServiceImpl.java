@@ -36,7 +36,7 @@ public class UserServiceImpl implements IUserService {
 		String password = user.getPassword();
 		String username = user.getUsername();
 		Integer id = user.getIduser();
-		User userDeBase = userRepository.findByIduser(Integer.toString(id));
+		User userDeBase = userRepository.findByIduser(id);
 		userDeBase.setPassword(password);
 		userDeBase.setUsername(username);
 		userRepository.save(userDeBase);
@@ -44,23 +44,15 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Integer id) {
 		userRepository.deleteById(id);		
 	}
 
 	@Override
-	public User findByIduser(String iduser) {
+	public User findByIduser(Integer iduser) {
 		return userRepository.findByIduser(iduser);
 	}
 
 
-	@Override
-	public User findByIdpet(String idpet) {
-		return userRepository.findByIdpet(idpet);
-	}
-
-	@Override
-	public User findByIdtitle(String idtitle) {
-		return userRepository.findByIdtitle(idtitle);
-	}
+	
 }

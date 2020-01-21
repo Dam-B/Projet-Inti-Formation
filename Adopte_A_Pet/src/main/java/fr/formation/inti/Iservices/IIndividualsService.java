@@ -5,9 +5,9 @@ import fr.formation.inti.entities.Individual;
 public interface IIndividualsService {
 	void save(Individual centre);
 	void update(Individual centre);
-	void delete(long id);
+	void delete(Integer id);
 	
-	Individual findByIduser(String iduser);
-	Individual findByIddept(String iddept);
+	Individual findByIduser(Integer iduser);
+	Individual findByIddept(Integer iddept);
 	Individual findByMail(String mail);
 }

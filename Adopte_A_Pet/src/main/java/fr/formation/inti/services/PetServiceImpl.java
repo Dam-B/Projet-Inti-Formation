@@ -56,29 +56,33 @@ public class PetServiceImpl implements IPetService {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Integer id) {
 		petRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public Pet findByIddept(String iddept) {
-		return petRepository.findByIddept(iddept);
+	public Pet findByDeptid(Integer iddept) {
+		return petRepository.findBydeptid(iddept);
 	}
 
 	@Override
-	public Pet findByIduser(String iduser) {
-		return petRepository.findByIduser(iduser);
+	public Pet findByIduser(User iduser) {
+		return null;
 	}
 
 	@Override
-	public Pet findByCategorie(String categorie) {
-		return petRepository.findByCategorie(categorie);
+	public Pet findByCategorie(Categorie categorie) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Pet findByIdpet(String idpet) {
-		return petRepository.findByIdpet(idpet);
+	public Pet findByIdpet(Integer idpet) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 
 }

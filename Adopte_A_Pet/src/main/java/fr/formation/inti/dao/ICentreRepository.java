@@ -4,14 +4,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.formation.inti.entities.Centre;
 
-public interface ICentreRepository extends JpaRepository<Centre, Long>{
+public interface ICentreRepository extends JpaRepository<Centre, Integer>{
 	
 	@SuppressWarnings("unchecked")
 	Centre save(Centre centre);
 	void update(Centre centre);
-	void delete(long id);
+	void delete(Integer id);
 	
-	Centre findByIduser(String iduser);
-	Centre findByIddept(String iddept);
+	Centre findByIduser(Integer iduser);
+	Centre findByIddept(Integer iddept);
 	//Find by id user
 }
