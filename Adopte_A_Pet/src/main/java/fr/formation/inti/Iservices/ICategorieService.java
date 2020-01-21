@@ -7,4 +7,6 @@ public interface ICategorieService {
 	void save(Categorie categorie);
 	void update(Categorie categorie);
 	void delete(Integer id);
+	
+	Categorie findByIdcat(Integer id);
 }

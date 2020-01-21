@@ -2,8 +2,6 @@ package fr.formation.inti;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +18,7 @@ import fr.formation.inti.Iservices.IDepartementService;
 import fr.formation.inti.Iservices.ITitleService;
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.conf.WebMvcConfig;
+import fr.formation.inti.dao.IUserRepository;
 import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
@@ -30,8 +29,10 @@ import fr.formation.inti.entities.User;
 public class UserWebServiceTest  {
 	
 
+	@SuppressWarnings("unused")
 	private MockMvc mockMvc;
-
+	@MockBean
+	private IUserRepository userRepository;
 	@MockBean
 	private IUserService userService;
 	@MockBean
@@ -50,20 +51,7 @@ public class UserWebServiceTest  {
 	public void setUp() throws Exception {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
-//	@Test
-//	public void testSave() throws Exception {
-//		// given
-//        User usr = new User();
-//        usr.setAdoptions(null);
-//        usr.setCentres(null);
-//        usr.setDateCreation(dateCreation);
-//
-//        given(userService.save(usr)).willReturn();
-//        // when + then
-//        this.mockMvc.perform(get("/api/v1/stocks"))
-//                .andExpect(status().isOk())
-//                .andExpect(content().json("[{'id': 1,'name': 'Stock 1';'price': 1}]"));
-//    }
+
 	@Test
 	public void testSaveGetUpdateDeleteUser() {
 		Departement dept = deptService.findByDeptid(1);
@@ -71,18 +59,15 @@ public class UserWebServiceTest  {
 		user= new User(dept, title, "Dam", "123456");
 		try {
 			// Save
-			user.setDateCreation(new Date());
-			user.setDateFermeture(null);
-			user.setDepartement(null);
-			user.setIndividuals(null);
-			user.setUsername("Damzer");
-			user.setPassword("855462318615");
+//			user.setIduser(1);
 			userService.save(user);
-			System.out.println("JUNIT Save User () with new ID "+ user.getIduser());
-			assertTrue(true);
+			System.out.println("JUNIT Save User () with new ID "+ user.getIduser() + "with name "+ user.getUsername());
+			boolean b = userRepository.existsById(user.getIduser());
+			assertTrue(b);
+			
 			// Find
-			userFindById = userService.findByUsername("C_N");
-			System.out.println("JUNIT Find By ID () with ID "+ userFindById.getIduser() + " and Name " + userFindById.getUsername());
+			userFindById = userRepository.findByIduser(1);
+			System.out.println("JUNIT Find By ID () with ID "+ user.getIduser() + " and Name " + user.getUsername());
 			assertTrue(true);
 			// Update
 			userUpdate = user;
@@ -91,6 +76,7 @@ public class UserWebServiceTest  {
 			assertTrue(true);
 			// Delete
 			userService.delete(userUpdate.getIduser());
+			System.out.println("JUNIT Delete User done !");
 			assertTrue(true);
 		}catch(Exception e) {
 			assertTrue("#JUNIT## \n" + e.getMessage().toString(), false);

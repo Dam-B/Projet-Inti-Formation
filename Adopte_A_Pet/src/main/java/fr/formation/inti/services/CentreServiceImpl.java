@@ -1,7 +1,7 @@
 package fr.formation.inti.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import fr.formation.inti.Iservices.ICentreService;
 import fr.formation.inti.dao.ICentreRepository;
@@ -9,6 +9,7 @@ import fr.formation.inti.entities.Centre;
 import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.User;
 
+@Service
 public class CentreServiceImpl implements ICentreService {
 	@Autowired
 	private ICentreRepository centreRepository;

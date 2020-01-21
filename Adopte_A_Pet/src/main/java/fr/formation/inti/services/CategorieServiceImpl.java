@@ -18,14 +18,22 @@ public class CategorieServiceImpl implements ICategorieService {
 
 	@Override
 	public void update(Categorie categorie) {
-		categorieRepository.findById(categorie.getIdcat());
+		String nom_categorie = categorie.getCategorie();
+		Categorie categorie_a_update = categorieRepository.findByIdcat(categorie.getIdcat());
+		categorie_a_update.setCategorie(nom_categorie);
+		categorieRepository.saveAndFlush(categorie_a_update);
 		
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		categorieRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public Categorie findByIdcat(Integer id) {
+		return categorieRepository.findByIdcat(id);
 	}
 
 

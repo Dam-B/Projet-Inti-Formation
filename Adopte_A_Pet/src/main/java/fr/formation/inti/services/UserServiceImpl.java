@@ -1,5 +1,7 @@
 package fr.formation.inti.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
@@ -44,7 +46,7 @@ public class UserServiceImpl implements IUserService {
 	public void delete(Integer id) {
 		userRepository.deleteById(id);		
 	}
-
+	
 	@Override
 	public User findByIduser(Integer iduser) {
 		return userRepository.findByIduser(iduser);
@@ -53,6 +55,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User findByTitle(Title title) {
 		return userRepository.findByTitle(title);
+	}
+
+	@Override
+	public Optional<User> findById(Integer id) {
+		return userRepository.findById(id);
 	}
 
 

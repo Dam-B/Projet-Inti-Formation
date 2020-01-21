@@ -25,6 +25,15 @@ import javax.persistence.TemporalType;
 @Table(name = "user", catalog = "adopt_a_pet")
 public class User implements java.io.Serializable {
 
+	@Override
+	public String toString() {
+		return "User [iduser=" + iduser + ", departement=" + departement + ", pet=" + pet + ", title=" + title
+				+ ", username=" + username + ", password=" + password + ", dateCreation=" + dateCreation
+				+ ", dateFermeture=" + dateFermeture + ", transfertsForNewIdUser=" + transfertsForNewIdUser + ", pets="
+				+ pets + ", individuals=" + individuals + ", transfertsForIduser=" + transfertsForIduser
+				+ ", adoptions=" + adoptions + ", centres=" + centres + ", historiques=" + historiques + "]";
+	}
+
 	/**
 	 * 
 	 */

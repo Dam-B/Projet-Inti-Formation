@@ -8,7 +8,7 @@ import fr.formation.inti.entities.User;
 public interface IIndividualRepository extends JpaRepository<Individual, Integer>{
 
 	Individual findByUser(User user);
-//	Individual findByPostalCode(int postalCode);
+	Individual findByPostalCode(int postalCode);
 	Individual findByMail(String mail);
 	//Find by id user
 }
