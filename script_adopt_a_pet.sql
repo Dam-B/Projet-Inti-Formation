@@ -332,8 +332,10 @@ CREATE TABLE `pet` (
   PRIMARY KEY (`idpet`),
   KEY `idcat_categorie_pet_idx` (`idcat`),
   KEY `iduser_user_pet_idx` (`iduser`),
+  KEY `deptid_departement_pet_idx` (`deptid`),
   CONSTRAINT `idcat_categorie_pet` FOREIGN KEY (`idcat`) REFERENCES `categorie` (`idcat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `iduser_user_pet` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `iduser_user_pet` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `deptid_departement_pet` FOREIGN KEY (`deptid`) REFERENCES `departement` (`deptid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `pet` (`name`,`idcat`,`race`,`iduser`, `deptid`) 
