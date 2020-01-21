@@ -41,6 +41,11 @@ public class IndividualServiceImpl implements IIndividualsService {
 	public Individual findByIddept(String iddept) {
 		return individualRepository.findByIddept(iddept);
 	}
+
+	@Override
+	public Individual findByMail(String mail) {
+		return individualRepository.findByMail(mail);
+	}
 	
 	
 }

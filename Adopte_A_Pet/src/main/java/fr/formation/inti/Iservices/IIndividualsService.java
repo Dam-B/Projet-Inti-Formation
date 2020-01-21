@@ -9,4 +9,5 @@ public interface IIndividualsService {
 	
 	Individual findByIduser(String iduser);
 	Individual findByIddept(String iddept);
+	Individual findByMail(String mail);
 }

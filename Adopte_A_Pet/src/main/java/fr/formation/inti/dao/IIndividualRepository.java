@@ -11,5 +11,6 @@ public interface IIndividualRepository extends JpaRepository<Individual, Long>{
 	
 	Individual findByIduser(String iduser);
 	Individual findByIddept(String iddept);
+	Individual findByMail(String mail);
 	//Find by id user
 }
