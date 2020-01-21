@@ -20,10 +20,9 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-img">
-                    <img src="../../resources/images/form-img.jpg" alt="">
+                    <img src="../../resources/img/login.jpeg" alt="">
                     <div class="signup-img-content">
-                        <h2>Register now </h2>
-                        <p>while seats are available !</p>
+                        <h2>Inscription</h2>
                     </div>
                 </div>
                 <div class="signup-form">
