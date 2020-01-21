@@ -21,6 +21,11 @@ import javax.persistence.Table;
 @Table(name = "pet", catalog = "adopt_a_pet")
 public class Pet implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idpet;
 	private Categorie categorie;
 	private User user;

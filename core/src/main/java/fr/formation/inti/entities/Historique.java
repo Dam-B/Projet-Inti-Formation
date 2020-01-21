@@ -21,6 +21,11 @@ import javax.persistence.TemporalType;
 @Table(name = "historique", catalog = "adopt_a_pet")
 public class Historique implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idhistorique;
 	private Departement departement;
 	private Pet pet;

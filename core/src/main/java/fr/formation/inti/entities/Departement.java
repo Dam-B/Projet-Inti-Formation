@@ -17,10 +17,14 @@ import javax.persistence.Table;
 @Table(name = "departement", catalog = "adopt_a_pet")
 public class Departement implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int deptid;
 	private int departementCode;
 	private String name;
-	private Set<Historique> historiques = new HashSet<Historique>(0);
 	private Set<Centre> centres = new HashSet<Centre>(0);
 	private Set<User> users = new HashSet<User>(0);
 
@@ -33,12 +37,11 @@ public class Departement implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Departement(int deptid, int departementCode, String name, Set<Historique> historiques, Set<Centre> centres,
+	public Departement(int deptid, int departementCode, String name, Set<Centre> centres,
 			Set<User> users) {
 		this.deptid = deptid;
 		this.departementCode = departementCode;
 		this.name = name;
-		this.historiques = historiques;
 		this.centres = centres;
 		this.users = users;
 	}
@@ -70,15 +73,6 @@ public class Departement implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")
-	public Set<Historique> getHistoriques() {
-		return this.historiques;
-	}
-
-	public void setHistoriques(Set<Historique> historiques) {
-		this.historiques = historiques;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")

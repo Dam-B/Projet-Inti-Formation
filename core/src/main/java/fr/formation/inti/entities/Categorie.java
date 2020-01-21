@@ -1,13 +1,15 @@
 package fr.formation.inti.entities;
 // Generated 15 janv. 2020 16:53:54 by Hibernate Tools 5.2.12.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,6 +21,10 @@ import javax.persistence.Table;
 @Table(name = "categorie", catalog = "adopt_a_pet")
 public class Categorie implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idcat;
 	private String categorie;
 	private Set<Pet> pets = new HashSet<Pet>(0);

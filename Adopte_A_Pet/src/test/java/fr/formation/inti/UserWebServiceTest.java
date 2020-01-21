@@ -2,6 +2,8 @@ package fr.formation.inti;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +15,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import fr.formation.inti.Iservices.IDepartementService;
+import fr.formation.inti.Iservices.ITitleService;
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.conf.WebMvcConfig;
+import fr.formation.inti.entities.Departement;
+import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,7 +34,10 @@ public class UserWebServiceTest  {
 
 	@MockBean
 	private IUserService userService;
-	
+	@MockBean
+	private IDepartementService deptService;
+	@MockBean
+	private ITitleService titleService;
 	@Autowired
 	private WebApplicationContext wac;
 	
@@ -56,13 +66,22 @@ public class UserWebServiceTest  {
 //    }
 	@Test
 	public void testSaveGetUpdateDeleteUser() {
+		Departement dept = deptService.findByDeptid(1);
+		Title title = titleService.findByIdtitle("1");
+		user= new User(dept, title, "Dam", "123456");
 		try {
 			// Save
+			user.setDateCreation(new Date());
+			user.setDateFermeture(null);
+			user.setDepartement(null);
+			user.setIndividuals(null);
+			user.setUsername("Damzer");
+			user.setPassword("855462318615");
 			userService.save(user);
-			System.out.println("JUNIT Save User () with new ID"+ user.getIduser());
+			System.out.println("JUNIT Save User () with new ID "+ user.getIduser());
 			assertTrue(true);
 			// Find
-			userFindById = userService.findByIduser(user.getIduser().toString());
+			userFindById = userService.findByIduser("1");
 			System.out.println("JUNIT Find By ID () with ID "+ userFindById.getIduser() + " and Name " + userFindById.getUsername());
 			assertTrue(true);
 			// Update

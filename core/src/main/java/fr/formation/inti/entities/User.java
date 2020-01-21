@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,12 @@ import javax.persistence.TemporalType;
 @Table(name = "user", catalog = "adopt_a_pet")
 public class User implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	private Integer iduser;
 	private Departement departement;
 	private Pet pet;
@@ -34,10 +41,10 @@ public class User implements java.io.Serializable {
 	private Date dateFermeture;
 	private Set<Transfert> transfertsForNewIdUser = new HashSet<Transfert>(0);
 	private Set<Pet> pets = new HashSet<Pet>(0);
-	private Set<Individual> individuals = new HashSet<Individual>(0);
+	private Individual individuals;
 	private Set<Transfert> transfertsForIduser = new HashSet<Transfert>(0);
 	private Set<Adoption> adoptions = new HashSet<Adoption>(0);
-	private Set<Centre> centres = new HashSet<Centre>(0);
+	private Centre centres;
 	private Set<Historique> historiques = new HashSet<Historique>(0);
 
 	public User() {
@@ -51,8 +58,8 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(Departement departement, Pet pet, Title title, String username, String password, Date dateCreation,
-			Date dateFermeture, Set<Transfert> transfertsForNewIdUser, Set<Pet> pets, Set<Individual> individuals,
-			Set<Transfert> transfertsForIduser, Set<Adoption> adoptions, Set<Centre> centres,
+			Date dateFermeture, Set<Transfert> transfertsForNewIdUser, Set<Pet> pets, Individual individuals,
+			Set<Transfert> transfertsForIduser, Set<Adoption> adoptions, Centre centres,
 			Set<Historique> historiques) {
 		this.departement = departement;
 		this.pet = pet;
@@ -82,7 +89,7 @@ public class User implements java.io.Serializable {
 		this.iduser = iduser;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "deptid", nullable = false)
 	public Departement getDepartement() {
 		return this.departement;
@@ -102,7 +109,7 @@ public class User implements java.io.Serializable {
 		this.pet = pet;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idtitle", nullable = false)
 	public Title getTitle() {
 		return this.title;
@@ -168,12 +175,13 @@ public class User implements java.io.Serializable {
 		this.pets = pets;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Individual> getIndividuals() {
+	@OneToOne(fetch = FetchType.LAZY)
+	@Column(name = "individual")
+	public Individual getIndividuals() {
 		return this.individuals;
 	}
 
-	public void setIndividuals(Set<Individual> individuals) {
+	public void setIndividuals(Individual individuals) {
 		this.individuals = individuals;
 	}
 
@@ -195,12 +203,13 @@ public class User implements java.io.Serializable {
 		this.adoptions = adoptions;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Centre> getCentres() {
+	@OneToOne(fetch = FetchType.LAZY)
+	@Column(name = "centre")
+	public Centre getCentres() {
 		return this.centres;
 	}
 
-	public void setCentres(Set<Centre> centres) {
+	public void setCentres(Centre centres) {
 		this.centres = centres;
 	}
 

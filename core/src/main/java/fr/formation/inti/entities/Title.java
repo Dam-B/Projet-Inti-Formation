@@ -19,6 +19,11 @@ import javax.persistence.Table;
 @Table(name = "title", catalog = "adopt_a_pet")
 public class Title implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idtitle;
 	private String title;
 	private Set<User> users = new HashSet<User>(0);

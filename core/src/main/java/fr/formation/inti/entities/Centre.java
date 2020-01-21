@@ -18,6 +18,11 @@ import javax.persistence.Table;
 @Table(name = "centre", catalog = "adopt_a_pet")
 public class Centre implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idcentre;
 	private Departement departement;
 	private User user;

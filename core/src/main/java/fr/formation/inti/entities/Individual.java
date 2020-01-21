@@ -20,6 +20,11 @@ import fr.formation.inti.entities.User;
 @Table(name = "individual", catalog = "adopt_a_pet")
 public class Individual implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idindvidual;
 	private User user;
 	private String firstName;
