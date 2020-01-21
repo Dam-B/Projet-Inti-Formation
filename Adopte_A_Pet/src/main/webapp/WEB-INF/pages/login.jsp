@@ -23,8 +23,8 @@
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="../../resources/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../../resources/css/util.css">
-	<link rel="stylesheet" type="text/css" href="../../resources/css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../resources/css2/util.css">
+	<link rel="stylesheet" type="text/css" href="../../resources/css2/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
