@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V17</title>
+	<title>AdoptAPetLogin</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -63,13 +63,13 @@
 					</div>
 
 					<div class="w-full text-center">
-						<a href="#" class="txt3">
+						<a href="/registration" class="txt3">
 							Sign Up
 						</a>
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('../../resources/images/bg-01.jpg');"></div>
+				<div class="login100-more" style="background-image: url('../../resources/img/login.jpg');"></div>
 			</div>
 		</div>
 	</div>
