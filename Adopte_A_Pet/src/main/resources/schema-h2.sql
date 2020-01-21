@@ -104,7 +104,10 @@ CREATE TABLE pet (
 Alter table adoption
 add constraint iduser_user_adoption_idx
 foreign key (iduser)
-references user (iduser),
+references user (iduser)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table adoption
 add constraint idpet_pet_adoption_idx
 foreign key(idpet)
 references pet (idpet)
@@ -114,7 +117,10 @@ ON UPDATE NO ACTION;
 Alter table centre
 add constraint iduser_user_centre_idx
 foreign key (iduser)
-references user (iduser),
+references user (iduser)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table centre
 add constraint deptid_departement_centre_idx
 foreign key (deptid)
 references departement (deptid)
@@ -124,10 +130,16 @@ ON UPDATE NO ACTION;
 Alter table historique
 add constraint idpet_idx
 foreign key (idpet)
-references pet (idpet),
+references pet (idpet)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table historique
 add constraint deptid_idx
 foreign key (deptid)
-references departement (deptid),
+references departement (deptid)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table historique
 add constraint iduser_user_historique_idx
 foreign key (iduser)
 REFERENCES user (iduser)
@@ -151,10 +163,16 @@ ON UPDATE NO ACTION;
 Alter table transfert
 add CONSTRAINT idpet_pet_transfert
 FOREIGN KEY (idpet)
-REFERENCES pet (idpet),
+REFERENCES pet (idpet)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table transfert
 add CONSTRAINT iduser_user_transfert
 FOREIGN KEY (iduser)
-REFERENCES user (iduser),
+REFERENCES user (iduser)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table transfert
 add CONSTRAINT newiduser_user_transfert
 FOREIGN KEY (new_id_user)
 REFERENCES user (iduser)
@@ -164,10 +182,16 @@ ON UPDATE NO ACTION;
 Alter table user
 add CONSTRAINT deptid_departement_user
 FOREIGN KEY (deptid)
-REFERENCES departement (deptid),
+REFERENCES departement (deptid)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table user
 add CONSTRAINT idpet_pet_user
 FOREIGN KEY (idpet)
-REFERENCES pet (idpet),
+REFERENCES pet (idpet)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table user
 add CONSTRAINT idtitle_title_user
 FOREIGN KEY (idtitle)
 REFERENCES title (idtitle)
@@ -177,7 +201,10 @@ ON UPDATE NO ACTION;
 Alter table pet
 add CONSTRAINT idcat_categorie_pet
 FOREIGN KEY (idcat)
-REFERENCES categorie (idcat),
+REFERENCES categorie (idcat)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+Alter table pet
 add CONSTRAINT iduser_user_pet
 FOREIGN KEY (iduser)
 REFERENCES user (iduser)
