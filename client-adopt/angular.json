@@ -23,16 +23,16 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css",
                             "src/assets/css/bootstrap.min.css",
                             "src/assets/css/font-awesome.min.css",
                             "src/assets/css/style.css",
-                            "src/assets/css/main.css",
-                            "src/assets/css/style2.css",
-                            "src/assets/css/util (2).css",
+                            "src/styles.css",
                             "src/assets/css/util.css"
                         ],
                         "scripts": [
+                            "src/assets/script/jquery.min.js",
+                            "src/assets/script/bootstrap.min.js",
+                            "src/assets/script/sticky.js",
                             "src/assets/script/bootstrap.bundle.min.js",
                             "src/assets/script/contactform.js",
                             "src/assets/script/counterup.min.js",
@@ -44,7 +44,6 @@
                             "src/assets/script/lockfixed.min.js",
                             "src/assets/script/parallax.js",
                             "src/assets/script/stellar.min.js",
-                            "src/assets/script/sticky.js",
                             "src/assets/script/superfish.min.js",
                             "src/assets/script/tether.min.js",
                             "src/assets/script/waypoints.min.js"
@@ -98,16 +97,16 @@
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
                         "styles": [
-                            "src/styles.css",
                             "src/assets/css/bootstrap.min.css",
                             "src/assets/css/font-awesome.min.css",
                             "src/assets/css/style.css",
-                            "src/assets/css/style2.css",
-                            "src/assets/css/util (2).css",
+                            "src/styles.css",
                             "src/assets/css/util.css"
                         ],
                         "scripts": [
-                            "src/assets/script/bootstrap.bundle.min.js",
+                            "src/assets/script/jquery.min.js",
+                            "src/assets/script/bootstrap.min.js",
+                            "src/assets/script/sticky.js", "src/assets/script/bootstrap.bundle.min.js",
                             "src/assets/script/contactform.js",
                             "src/assets/script/counterup.min.js",
                             "src/assets/script/custom.js",
@@ -118,7 +117,6 @@
                             "src/assets/script/lockfixed.min.js",
                             "src/assets/script/parallax.js",
                             "src/assets/script/stellar.min.js",
-                            "src/assets/script/sticky.js",
                             "src/assets/script/superfish.min.js",
                             "src/assets/script/tether.min.js",
                             "src/assets/script/waypoints.min.js"
