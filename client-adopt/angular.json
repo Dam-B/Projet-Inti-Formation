@@ -26,7 +26,11 @@
                             "src/styles.css",
                             "src/assets/css/bootstrap.min.css",
                             "src/assets/css/font-awesome.min.css",
-                            "src/assets/css/style.css"
+                            "src/assets/css/style.css",
+                            "src/assets/css/main.css",
+                            "src/assets/css/style2.css",
+                            "src/assets/css/util (2).css",
+                            "src/assets/css/util.css"
                         ],
                         "scripts": [
                             "src/assets/script/bootstrap.bundle.min.js",
@@ -97,7 +101,10 @@
                             "src/styles.css",
                             "src/assets/css/bootstrap.min.css",
                             "src/assets/css/font-awesome.min.css",
-                            "src/assets/css/style.css"
+                            "src/assets/css/style.css",
+                            "src/assets/css/style2.css",
+                            "src/assets/css/util (2).css",
+                            "src/assets/css/util.css"
                         ],
                         "scripts": [
                             "src/assets/script/bootstrap.bundle.min.js",
