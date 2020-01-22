@@ -30,16 +30,12 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <div class="form-input">
-                                    <label for="first_name" class="required">First name</label>
+                                    <label for="username" class="required">First name</label>
                                     <input type="text" name="first_name" id="first_name" />
                                 </div>
                                 <div class="form-input">
                                     <label for="last_name" class="required">Last name</label>
                                     <input type="text" name="last_name" id="last_name" />
-                                </div>
-                                <div class="form-input">
-                                    <label for="company" class="required">Company</label>
-                                    <input type="text" name="company" id="company" />
                                 </div>
                                 <div class="form-input">
                                     <label for="email" class="required">Email</label>
