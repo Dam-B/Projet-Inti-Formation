@@ -28,7 +28,7 @@ public class IndividualServiceImpl implements IIndividualsService {
 		String mail = indiv.getMail();
 		String tel = indiv.getTel();
 		
-		Individual indiv_a_update = individualRepository.findByIdindividual(indiv.getIdindvidual());
+		Individual indiv_a_update = individualRepository.findByIdindvidual(indiv.getIdindvidual());
 		
 		indiv_a_update.setAdress(address);
 		indiv_a_update.setCity(city);
@@ -63,9 +63,8 @@ public class IndividualServiceImpl implements IIndividualsService {
 	}
 
 	@Override
-	public Individual findByIdindividual(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Individual findByIdindvidual(Integer id) {
+		return individualRepository.findByIdindvidual(id);
 	}
 
 

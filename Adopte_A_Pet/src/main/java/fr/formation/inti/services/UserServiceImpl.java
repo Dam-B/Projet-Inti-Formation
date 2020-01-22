@@ -20,9 +20,10 @@ public class UserServiceImpl implements IUserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save(User user) {
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public Integer save(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        return user.getIduser();
     }
 
     @Override

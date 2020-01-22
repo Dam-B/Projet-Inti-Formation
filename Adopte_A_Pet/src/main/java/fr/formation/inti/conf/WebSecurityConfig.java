@@ -27,11 +27,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	
     	http.csrf().disable();
     	
+    	http.authorizeRequests().antMatchers("/*").permitAll();
+    	
     	//On met les pages ou tous les visiteurs ont accès sans être loggé
-    	http.authorizeRequests().antMatchers("/login","/inscription","/logout").permitAll();
+    	http.authorizeRequests().antMatchers("/login","/inscription","/logout").permitAll().and().httpBasic();
     	
     	//On commence les restrictions sur certaines pages en fonction du title attribué à l'utilisateurs
-    	http.authorizeRequests().antMatchers("EXAMPLEAREMPLIR").access("hasAnyTitle('TITLE_USER','TITLE_ADMIN')");
+//    	http.authorizeRequests().antMatchers("EXAMPLEAREMPLIR");
+//    	.access("hasAnyTitle('TITLE_USER','TITLE_ADMIN')");
     	
     	//Controle de la redirection en cas d'accès à une page non valide pour un title
     	http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/pageErreurTitle");

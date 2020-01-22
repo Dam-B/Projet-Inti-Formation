@@ -2,8 +2,10 @@ package fr.formation.inti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.dao.IDepartementRepository;
@@ -13,7 +15,7 @@ import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
  
-@Controller
+@RestController
 public class MainController {
 	@Autowired
     private IUserService userService;
@@ -67,7 +69,7 @@ public class MainController {
     }
  
     @ResponseBody
-    @RequestMapping("/showByIDSEARCH")
+    @GetMapping("/showByIDSEARCH")
     public String showFullNameLikeTom() {
  
         User usr = userRepository.findByIduser(1);
