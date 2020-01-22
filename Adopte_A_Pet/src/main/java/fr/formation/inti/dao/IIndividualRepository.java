@@ -10,6 +10,6 @@ public interface IIndividualRepository extends JpaRepository<Individual, Integer
 	Individual findByUser(User user);
 	Individual findByPostalCode(int postalCode);
 	Individual findByMail(String mail);
-	Individual findByIdindividual(Integer id);
+	Individual findByIdindvidual(Integer id);
 	//Find by id user
 }

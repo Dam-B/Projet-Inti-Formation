@@ -11,5 +11,5 @@ public interface IIndividualsService {
 	Individual findByUser(User user);
 	Individual findByMail(String mail);
 	Individual findByPostalCode(int postalCode);
-	Individual findByIdindividual(Integer id);
+	Individual findByIdindvidual(Integer id);
 }
