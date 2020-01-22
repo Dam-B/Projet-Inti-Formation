@@ -22,26 +22,45 @@ public class CentreServiceImpl implements ICentreService {
 
 	@Override
 	public void update(Centre centre) {
-		//A compléter avec les set et get des datas de la BDD
+		String city = centre.getCity();
+		Departement dept = centre.getDepartement();
+		String name = centre.getName();
+		String postalCode = centre.getPostalCode();
+		String tel = centre.getTel();
+		User user = centre.getUser();
+		
+		Centre centre_a_update = centreRepository.findByIdcentre(centre.getIdcentre());
+		
+		centre_a_update.setCity(city);
+		centre_a_update.setDepartement(dept);
+		centre_a_update.setName(name);
+		centre_a_update.setPostalCode(postalCode);
+		centre_a_update.setTel(tel);
+		centre_a_update.setUser(user);
+		
+		centreRepository.saveAndFlush(centre_a_update);
 		
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		centreRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public Centre findByUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return centreRepository.findByUser(user);
 	}
 
 	@Override
 	public Centre findByDepartement(Departement dept) {
-		// TODO Auto-generated method stub
-		return null;
+		return centreRepository.findByDepartement(dept);
+	}
+
+	@Override
+	public Centre findByIdcentre(Integer id) {
+		return centreRepository.findByIdcentre(id);
 	}
 
 

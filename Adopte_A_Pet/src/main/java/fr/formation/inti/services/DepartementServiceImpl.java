@@ -18,20 +18,25 @@ public class DepartementServiceImpl implements IDepartementService {
 
 	@Override
 	public void update(Departement departement) {
-		// TODO Auto-generated method stub
+		String name = departement.getName();
+		
+		Departement departement_a_update = departementRepository.findByDeptid(departement.getDeptid());
+		
+		departement_a_update.setName(name);
+		
+		departementRepository.saveAndFlush(departement_a_update);
 		
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		departementRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public Departement findByDeptid(Integer deptid) {
-		departementRepository.findByDeptid(deptid);
-		return null;
+	public Departement findByDeptid(Integer deptid) {	
+		return departementRepository.findByDeptid(deptid);
 	}
 
 

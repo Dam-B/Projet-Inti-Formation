@@ -12,4 +12,5 @@ public interface ICentreService {
 	
 	Centre findByUser(User user);
 	Centre findByDepartement(Departement dept);
+	Centre findByIdcentre(Integer id);
 }

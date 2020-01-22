@@ -62,7 +62,7 @@ public class AdoptionServiceImpl implements IAdoptionService{
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		adoptionRepository.deleteById(id);
 		
 	}
 

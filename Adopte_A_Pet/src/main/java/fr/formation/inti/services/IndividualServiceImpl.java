@@ -1,7 +1,5 @@
 package fr.formation.inti.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +13,31 @@ public class IndividualServiceImpl implements IIndividualsService {
 	private IIndividualRepository individualRepository;
 
 	@Override
-	public void save(Individual centre) {
-		individualRepository.save(centre);
+	public void save(Individual indiv) {
+		individualRepository.save(indiv);
 		
 	}
 
 	@Override
-	public void update(Individual centre) {
-		individualRepository.save(centre);
+	public void update(Individual indiv) {
 		
+		String address = indiv.getAdress();
+		String city = indiv.getCity();
+		String firstName = indiv.getFirstName();
+		String lastName = indiv.getLastName();
+		String mail = indiv.getMail();
+		String tel = indiv.getTel();
+		
+		Individual indiv_a_update = individualRepository.findByIdindividual(indiv.getIdindvidual());
+		
+		indiv_a_update.setAdress(address);
+		indiv_a_update.setCity(city);
+		indiv_a_update.setFirstName(firstName);
+		indiv_a_update.setLastName(lastName);
+		indiv_a_update.setMail(mail);
+		indiv_a_update.setTel(tel);
+		
+		individualRepository.saveAndFlush(indiv_a_update);
 	}
 
 	@Override
@@ -35,18 +49,21 @@ public class IndividualServiceImpl implements IIndividualsService {
 
 	@Override
 	public Individual findByMail(String mail) {
-		// TODO Auto-generated method stub
 		return individualRepository.findByMail(mail);
 	}
 
 	@Override
 	public Individual findByUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return individualRepository.findByUser(user);
 	}
 
 	@Override
 	public Individual findByPostalCode(int postalCode) {
+		return individualRepository.findByPostalCode(postalCode);
+	}
+
+	@Override
+	public Individual findByIdindividual(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

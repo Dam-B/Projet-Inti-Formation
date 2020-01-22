@@ -22,7 +22,7 @@ public class TitleServiceImpl implements ITitleService {
 		String newTitleName = title.getTitle();
 		Title tl2 = titleRepository.findByIdtitle(title.getIdtitle());
 		tl2.setTitle(newTitleName);
-		
+		titleRepository.saveAndFlush(tl2);
 		
 	}
 

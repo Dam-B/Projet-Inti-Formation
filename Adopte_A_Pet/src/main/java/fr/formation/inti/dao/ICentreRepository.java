@@ -9,5 +9,6 @@ import fr.formation.inti.entities.User;
 public interface ICentreRepository extends JpaRepository<Centre, Integer>{
 	Centre findByUser(User user);
 	Centre findByDepartement(Departement dept);
+	Centre findByIdcentre(Integer id);
 	//Find by id user
 }
