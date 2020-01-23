@@ -6,7 +6,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <head>
 <meta charset="utf-8">
@@ -111,56 +114,112 @@
 </header>
 <!-- #header -->
 
-<body>
+<h:form>
+	<p:dataTable var="pet" value="#{dtFilterView.pet1}"
+		widgetVar="carsTable1"
+		emptyMessage="No pets found with given criteria"
+		filteredValue="#{dtFilterView.filteredpet1}">
 
-	<div class="panel-body">
-		<table class="table table-striped table-bordered">
-			<tr>
-				<th>Name</th>
-				<th>Category</th>
-				<th>Race</th>
-				<th>Age</th>
-				<th>Location</th>
-				<th>options</th>
-			</tr>
+		<p:column filterBy="#{car.year}" headerText="Year" footerText="lte"
+			filterMatchMode="lte">
+			<f:facet name="filter">
+				<p:spinner onchange="PF('carsTable1').filter()"
+					styleClass="year-spinner custom-filter">
+					<f:converter converterId="javax.faces.Integer" />
+				</p:spinner>
+			</f:facet>
+			<h:outputText value="#{car.year}" />
+		</p:column>
 
-			<!-- loop over and print our customers -->
-			<c:forEach var="e" items="${pagedListHolder.pageList}">
+		<p:column filterBy="#{car.brand}" headerText="Brand"
+			footerText="exact" filterMatchMode="exact">
+			<f:facet name="filter">
+				<p:selectOneMenu onchange="PF('carsTable1').filter()"
+					styleClass="custom-filter">
+					<f:selectItem itemLabel="Select One" itemValue="#{null}"
+						noSelectionOption="true" />
+					<f:selectItems value="#{dtFilterView.brands}" />
+				</p:selectOneMenu>
+			</f:facet>
+			<h:outputText value="#{car.brand}" />
+		</p:column>
 
-				<!-- construct an "update" link with employee id -->
-				<c:url var="updateLink" value="/pet/updateForm">
-					<c:param name="idpet" value="${p.idpet}" />
-				</c:url>
+		<p:column filterBy="#{car.color}" headerText="Color" footerText="in"
+			filterMatchMode="in">
+			<f:facet name="filter">
+				<p:selectCheckboxMenu label="Colors"
+					onchange="PF('carsTable1').filter()" scrollHeight="150"
+					styleClass="custom-filter">
+					<f:selectItems value="#{dtFilterView.colors}" />
+				</p:selectCheckboxMenu>
+			</f:facet>
+			<h:outputText value="#{car.color}" />
+		</p:column>
 
-				<!-- construct an "delete" link with employee id -->
-				<c:url var="deleteLink" value="/pet/delete">
-					<c:param name="idpet" value="${p.idpet}" />
-				</c:url>
+		<p:column filterBy="#{car.sold}" headerText="Status"
+			footerText="equals" filterMatchMode="equals">
+			<f:facet name="filter">
+				<p:selectOneButton onchange="PF('carsTable1').filter()"
+					styleClass="custom-filter">
+					<f:converter converterId="javax.faces.Boolean" />
+					<f:selectItem itemLabel="All" itemValue="" />
+					<f:selectItem itemLabel="Sold" itemValue="true" />
+					<f:selectItem itemLabel="Sale" itemValue="false" />
+				</p:selectOneButton>
+			</f:facet>
+			<h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
+		</p:column>
 
-				<tr>
-					<td>${p.name}</td>
-					<td>${p.categorie.idcat}</td>
-					<td>${p.race}</td>
-					<td>${p.age}</td>
-					<td>${p.departement.deptid}</td>
-					<td>
-						<!-- display the update link --> <a href="${updateLink}"> <i
-							class="fas fa-user-edit"></i>
-					</a> | <a href="${deleteLink}"
-						onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
-							<i class="fas fa-user-times"></i>
-					</a>
-					</td>
+		<p:column filterBy="#{car.price}" headerText="Price"
+			footerText="custom (min)"
+			filterFunction="#{dtFilterView.filterByPrice}">
+			<h:outputText value="#{car.price}">
+				<f:convertNumber currencySymbol="$" type="currency" />
+			</h:outputText>
+		</p:column>
+	</p:dataTable>
 
-				</tr>
+	<p:dataTable var="car" value="#{dtFilterView.cars2}"
+		widgetVar="carsTable2"
+		emptyMessage="No cars found with given criteria"
+		filteredValue="#{dtFilterView.filteredCars2}"
+		globalFilterFunction="#{dtFilterView.globalFilterFunction}">
 
-			</c:forEach>
+		<f:facet name="header">
+			<p:outputPanel>
+				<h:outputText value="Search all fields using globalFilterFunction:" />
+				<p:inputText id="globalFilter" onkeyup="PF('carsTable2').filter()"
+					style="width:150px" placeholder="Enter keyword" />
+			</p:outputPanel>
+		</f:facet>
 
-		</table>
-	</div>
+		<p:column headerText="Id">
+			<h:outputText value="#{car.id}" />
+		</p:column>
 
-</body>
+		<p:column headerText="Year">
+			<h:outputText value="#{car.year}" />
+		</p:column>
 
+		<p:column headerText="Brand">
+			<h:outputText value="#{car.brand}" />
+		</p:column>
+
+		<p:column headerText="Color">
+			<h:outputText value="#{car.color}" />
+		</p:column>
+
+		<p:column headerText="Status">
+			<h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
+		</p:column>
+
+		<p:column headerText="Price">
+			<h:outputText value="#{car.price}">
+				<f:convertNumber currencySymbol="$" type="currency" />
+			</h:outputText>
+		</p:column>
+	</p:dataTable>
+</h:form>
 <footer class="site-footer">
 	<div class="bottom">
 		<div class="container">
