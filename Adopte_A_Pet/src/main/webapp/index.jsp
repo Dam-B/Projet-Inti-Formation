@@ -102,22 +102,22 @@
 							<li class="menu-has-children"><a href="#">Go directly to
 									:</a>
 								<ul>
-									<li><a href="#">Dogs Category</a></li>
-									<li><a href="#">Cats Category</a></li>
-									<li><a href="#">Rodents Category</a></li>
-									<li><a href="#">Exotic Pets Category</a></li>
-									<li><a href="#">All Categories</a></li>
+									<li><a href="/pet/list/dog">Dogs Category</a></li>
+									<li><a href="/pet/list/cat">Cats Category</a></li>
+									<li><a href="/pet/list/rodents">Rodents Category</a></li>
+									<li><a href="/pet/list/exotic">Exotic Pets Category</a></li>
+									<li><a href="/pet/list">All Categories</a></li>
 								</ul></li>
 							<li><a href="#">Admin options : <!-- ici chercher comment cacher et afficher des menus si admin --></a>
 								<ul>
-									<li><a href="#">Manage Pets</a></li>
-									<li><a href="#">Manage Users</a></li>
+									<li><a href="/pet/list">Manage Pets</a></li>
+									<li><a href="/user/list">Manage Users</a></li>
 									<li><a href="#">Manage transfer forms</a></li>
 									<li><a href="#">Manage adoption forms</a></li>
 								</ul></li>
 							<li><a href="#">Host Family options : <!-- ici chercher comment cacher et afficher des menus si FA --></a>
 								<ul>
-									<li><a href="#">Manage Pets</a></li>
+									<li><a href="/pet/list/idtransient">Manage Pets</a></li>
 									<li><a href="#">Create transfer forms</a></li>
 									<li><a href="#">Manage adoption forms</a></li>
 								</ul></li>
@@ -178,9 +178,9 @@
 					</div>
 				</div>
 				<div class="container text-center" style="margin-top: 20px;">
-					<a class="btn btn-full" href="#">Connexion</a> <a
+					<a class="btn btn-full" href="/login">Connexion</a> <a
 						class="btn btn-full" href="#portfolio">See our pets</a> <a
-						class="btn btn-full" href="#">Inscription</a>
+						class="btn btn-full" href="/registration">Inscription</a>
 				</div>
 			</div>
 		</div>
@@ -196,12 +196,24 @@
 			<p>From here you can directly choose a category or see all the
 				animals</p>
 		</div>
-
+		<div class="form-group">
+			<select name="type" class="form-control" name="departement" id="subject">
+				<option>Please choose the departement :</option>
+				<option value="pet">Informations about a pet</option>
+				<option value="host_fa">I want to be a Host Family</option>
+				<option value="adoption">I have a pet to be adopted</option>
+				<option value="center">Add a center to the list of partner
+					centers</option>
+				<option value="other">Other Reasons</option>
+			</select>
+			<div class="validation"></div>
+		</div>
 		<div class="portfolio-grid">
 			<div class="row">
 				<div class="col-lg-3 col-sm-6 col-xs-12">
 					<div class="card card-block">
-						<a href="#"><img alt="" src="resources/img/dogs.jpg">
+						<a href="/pet/list/dog"><img alt=""
+							src="resources/img/dogs.jpg">
 							<div class="portfolio-over">
 								<div>
 									<h3 class="card-title">Dogs Category</h3>
@@ -214,7 +226,8 @@
 
 				<div class="col-lg-3 col-sm-6 col-xs-12">
 					<div class="card card-block">
-						<a href="#"><img alt="" src="resources/img/cats.jpg">
+						<a href="/pet/list/cat"><img alt=""
+							src="resources/img/cats.jpg">
 							<div class="portfolio-over">
 								<div>
 									<h3 class="card-title">Cats Category</h3>
@@ -227,7 +240,8 @@
 
 				<div class="col-lg-3 col-sm-6 col-xs-12">
 					<div class="card card-block">
-						<a href="#"><img alt="" src="resources/img/rodents.jpg">
+						<a href="/pet/list/rodents"><img alt=""
+							src="resources/img/rodents.jpg">
 							<div class="portfolio-over">
 								<div>
 									<h3 class="card-title">Rodents Category</h3>
@@ -240,7 +254,8 @@
 
 				<div class="col-lg-3 col-sm-6 col-xs-12">
 					<div class="card card-block">
-						<a href="#"><img alt="" src="resources/img/exotics.jpg">
+						<a href="/pet/list/exotic"><img alt=""
+							src="resources/img/exotics.jpg">
 							<div class="portfolio-over">
 								<div>
 									<h3 class="card-title">Exotics pets Category</h3>
@@ -253,7 +268,7 @@
 
 				<div class="col-lg-3 col-sm-6 col-xs-12">
 					<div class="card card-block">
-						<a href="#"><img alt="" src="resources/img/all.jpg">
+						<a href="/pet/list"><img alt="" src="resources/img/all.jpg">
 							<div class="portfolio-over">
 								<div>
 									<h3 class="card-title">All Categories</h3>

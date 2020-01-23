@@ -287,7 +287,7 @@ CREATE TABLE `categorie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `categorie` (`categorie`) 
-VALUES ("CHIEN"),("CHAT"),("NAC");
+VALUES ("Dog"),("Cat"),("Rodent"),("Exotic");
 
 -- -----------------------------------------------------
 -- Table `adopt_a_pet`.`user`
