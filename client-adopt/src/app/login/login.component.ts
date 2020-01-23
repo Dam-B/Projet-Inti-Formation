@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkLogin() {
+  authenticate() {
     this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
-        this.router.navigate(['cities'])
+        this.router.navigate(['home'])
         this.invalidLogin = false
       },
       error => {

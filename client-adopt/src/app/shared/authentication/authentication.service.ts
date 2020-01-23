@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-export class User{
-  constructor(public status:string) {}
+export class Token{
+  constructor(public token:string) {}
 }
 
 @Injectable({
@@ -14,13 +14,11 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticate(username, password) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.http.get<User>('http://localhost:8080/validateLogin',{ headers }).pipe(
-      map(userData => {
+    return this.http.post<Token>('http://localhost:8080/authenticate',{ username, password }).pipe(
+      map(tokenData => {
         sessionStorage.setItem('username', username);
-        let authString = 'Basic ' + btoa(username + ':' + password);
-        sessionStorage.setItem('basicauth', authString);
-        return userData;
+        sessionStorage.setItem('token', `Bearer ${tokenData.token}`);
+        return tokenData;
       }));
   }
 

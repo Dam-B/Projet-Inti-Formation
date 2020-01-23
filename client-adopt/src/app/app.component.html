@@ -1,4 +1,4 @@
-<app-image-accueil></app-image-accueil>
+<app-image-accueil *ngIf="router.url === '/home'"></app-image-accueil>
 <app-header></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

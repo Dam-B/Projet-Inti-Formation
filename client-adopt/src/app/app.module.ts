@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,10 @@ import { ImageAccueilComponent } from './image-accueil/image-accueil.component';
 import { LoginComponent } from './login/login.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
+import { BasicAuthHtppInterceptorService} from './shared';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PetsComponent } from './pets/pets.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +23,20 @@ import { SignInComponent } from './sign-in/sign-in.component';
     HomeComponent,
     ImageAccueilComponent,
     LoginComponent,
-    SignInComponent
+    SignInComponent,
+    PetsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthHtppInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
