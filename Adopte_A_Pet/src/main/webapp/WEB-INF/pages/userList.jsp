@@ -125,7 +125,7 @@
 				<div class="panel-body">
 					<table class="table table-striped table-bordered">
 						<tr>
-							<th hidden="true">idPet</th>
+							<th hidden="true">iduser</th>
 							<th>Name</th>
 							<th>Category</th>
 							<th>Race</th>

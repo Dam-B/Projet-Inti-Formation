@@ -105,8 +105,8 @@ INSERT INTO title (title) VALUES
 ('admin'),('F.A'),('User'),('Centre');
 
 
-INSERT INTO categorie (categorie) 
-VALUES ('CHIEN'),('CHAT'),('NAC');
+INSERT INTO `categorie` (categorie) 
+VALUES ('Dog'),('Cat'),('Rodent'),('Exotic');
 
 
 INSERT INTO user (deptid,username,password,idtitle) 
