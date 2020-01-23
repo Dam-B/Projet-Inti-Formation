@@ -1,8 +1,14 @@
 package fr.formation.inti.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import fr.formation.inti.Iservices.IPetService;
@@ -78,8 +84,32 @@ public class PetServiceImpl implements IPetService {
 	}
 
 	@Override
+	public List<Pet> findAllPet() {
+		Iterable<Pet> it = petRepository.findAll();
+		List<Pet> employees = new ArrayList<Pet>();
+		it.forEach(employees:: add);
+		return employees;
+	}
+	
+	public List<Pet> getAllPet(Integer pageNo, Integer pageSize, String sortBy)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+ 
+        Page<Pet> pagedResult = petRepository.findAll(paging);
+         
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Pet>();
+        }
+    }
+	
+	public Page<Pet> getPage(Pageable pageable){
+        return petRepository.findAll(pageable);
+    }
+
+	@Override
 	public Pet findByIdpet(Integer idpet) {
-		// TODO Auto-generated method stub
 		return petRepository.findByIdpet(idpet);
 	}
 
