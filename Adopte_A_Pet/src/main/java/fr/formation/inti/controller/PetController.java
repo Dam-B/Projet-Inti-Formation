@@ -41,17 +41,7 @@ import fr.formation.inti.validation.UserValidator;
 @RequestMapping("/pet")
 @SessionAttributes("pets")
 public class PetController {
-	@Autowired
-	private IUserRepository userRepository;
 
-	@Autowired
-	private IUserService userService;
-
-	@Autowired
-	private ISecurityService securityService;
-
-	@Autowired
-	private UserValidator userValidator;
 	
 	@Autowired
 	private IPetService petService;

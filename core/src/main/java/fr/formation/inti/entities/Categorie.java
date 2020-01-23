@@ -27,7 +27,7 @@ public class Categorie implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idcat;
 	private String categorie;
-	private Set<Pet> pets = new HashSet<Pet>(0);
+
 
 	public Categorie() {
 	}
@@ -36,10 +36,7 @@ public class Categorie implements java.io.Serializable {
 		this.categorie = categorie;
 	}
 
-	public Categorie(String categorie, Set<Pet> pets) {
-		this.categorie = categorie;
-		this.pets = pets;
-	}
+
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -62,13 +59,6 @@ public class Categorie implements java.io.Serializable {
 		this.categorie = categorie;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<Pet> getPets() {
-		return this.pets;
-	}
 
-	public void setPets(Set<Pet> pets) {
-		this.pets = pets;
-	}
 
 }

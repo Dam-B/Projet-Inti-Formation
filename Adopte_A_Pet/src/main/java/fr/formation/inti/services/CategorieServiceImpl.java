@@ -1,11 +1,12 @@
 package fr.formation.inti.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.inti.Iservices.ICategorieService;
 import fr.formation.inti.dao.ICategorieRepository;
 import fr.formation.inti.entities.Categorie;
-
+@Service
 public class CategorieServiceImpl implements ICategorieService {
 	@Autowired
 	private ICategorieRepository categorieRepository;
