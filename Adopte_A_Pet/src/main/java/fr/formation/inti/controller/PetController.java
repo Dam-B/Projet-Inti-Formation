@@ -129,7 +129,7 @@ public class PetController {
 	}
 
 	@PostMapping("/savePet")
-	public String saveEmployee(@ModelAttribute("pet") Pet pet) {
+	public String savePet(@ModelAttribute("pet") Pet pet) {
 		if (pet.getIdpet() != null)
 			petService.update(pet);
 		else

@@ -75,24 +75,22 @@
 							<c:forEach var="e" items="${pagedListHolder.pageList}">
 
 								<!-- construct an "update" link with employee id -->
-								<c:url var="updateLink" value="/employee/updateForm">
-									<c:param name="empId" value="${e.empId}" />
+								<c:url var="updateLink" value="/pet/updateForm">
+									<c:param name="idpet" value="${e.idpet}" />
 								</c:url>
 
 								<!-- construct an "delete" link with employee id -->
-								<c:url var="deleteLink" value="/employee/delete">
-									<c:param name="empId" value="${e.empId}" />
+								<c:url var="deleteLink" value="/pet/delete">
+									<c:param name="idpet" value="${e.idpet}" />
 								</c:url>
 
 								<tr>
-									<td>${e.empId}</td>
-									<td>${e.firstName}</td>
-									<td>${e.lastName}</td>
-									<td>${e.email}</td>
-									<td>${e.salaire}</td>
-									<td>${e.manager.empId}</td>
-									<td><fmt:formatDate value="${e.startDate}" type="date"
-											pattern="yyyy-MM-dd" /></td>
+									<td>${e.idpet}</td>
+									<td>${e.age}</td>
+									<td>${e.categorie}</td>
+									<td>${e.departement}</td>
+									<td>${e.name}</td>
+									<td>${e.race}</td>
 									<td>
 										<!-- display the update link --> <a href="${updateLink}">
 											<i class="fas fa-user-edit"></i>

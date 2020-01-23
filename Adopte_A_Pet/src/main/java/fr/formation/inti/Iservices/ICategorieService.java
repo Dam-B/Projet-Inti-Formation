@@ -9,4 +9,5 @@ public interface ICategorieService {
 	void delete(Integer id);
 	
 	Categorie findByIdcat(Integer id);
+	Categorie findByCategorie(String categorie);
 }

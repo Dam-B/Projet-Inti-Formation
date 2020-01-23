@@ -46,18 +46,63 @@
 								<div class="form-group ${status.error ? 'has-error' : ''}">
 									<form:input type="text" path="name" class="form-control"
 										placeholder="Nom de l'animal" autofocus="true"></form:input>
-									<form:errors path="name"></form:errors>
+									<form:errors path="firstName"></form:errors>
 								</div>
 							</spring:bind>
 							
 							<spring:bind path="age">
 								<div class="form-group ${status.error ? 'has-error' : ''}">
-									<form:input type="text" path="age" class="form-control"
-										placeholder="age" autofocus="true"></form:input>
-									<form:errors path="age"></form:errors>
+									<form:input type="text" path="lastName" class="form-control"
+										placeholder="lastName" autofocus="true"></form:input>
+									<form:errors path="lastName"></form:errors>
 								</div>
 							</spring:bind>
 
+							<spring:bind path="email">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<form:input type="text" path="email" class="form-control"
+										placeholder="email" autofocus="true"></form:input>
+									<form:errors path="email"></form:errors>
+								</div>
+							</spring:bind>
+							
+							<spring:bind path="salaire">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<form:input type="number" path="salaire" class="form-control"
+										placeholder="salaire" autofocus="true"></form:input>
+									<form:errors path="salaire"></form:errors>
+								</div>
+							</spring:bind>
+
+							<spring:bind path="title">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+								<label for="manager" class="col-md-6 control-label">Title</label>
+									<form:input type="text" path="title" class="form-control"
+										placeholder="title" autofocus="true"></form:input>
+									<form:errors path="title"></form:errors>
+								</div>
+							</spring:bind>
+							
+							<spring:bind path="startDate">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<label for="startDate" class="col-md-6 control-label">Start Date</label>
+									<form:input type="Date" path="startDate" class="datepick"></form:input>
+									<form:errors path="startDate"></form:errors>
+								</div>
+							</spring:bind>
+							
+							<spring:bind path="manager">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<label for="manager" class="col-md-6 control-label">Manager</label>
+									<div class="col-md-9">
+										<form:select path="manager" cssClass="form-control" >
+										<form:option value="" label="--- Select a manager ---"/>
+										<form:options items="${employees}" itemValue="empId" itemLabel="firstName" />
+										<form:errors path="manager"></form:errors>
+										</form:select>
+									</div>
+								</div>
+							</spring:bind>
 							<div class="form-group">
 
 								<!-- Button -->

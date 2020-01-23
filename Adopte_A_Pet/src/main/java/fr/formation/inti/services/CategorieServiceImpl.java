@@ -36,6 +36,11 @@ public class CategorieServiceImpl implements ICategorieService {
 		return categorieRepository.findByIdcat(id);
 	}
 
+	@Override
+	public Categorie findByCategorie(String categorie) {
+		return categorieRepository.findByCategorie(categorie);
+	}
+
 
 
 	
