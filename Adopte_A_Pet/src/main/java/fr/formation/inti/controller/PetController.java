@@ -19,6 +19,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -169,16 +170,16 @@ public class PetController {
 		return list;
 	}
 
-	@GetMapping("/pet/list/cat")
-	public String filterPetListCat(@RequestParam("cat") String cat, Model theModel) {
+	@GetMapping("/pet/list/{cat}")
+	public String filterPetListCat(@PathVariable("cat") String cat, Model theModel) {
 		Categorie cat1 = catService.findByCategorie(cat);
 		List<Pet> list = petService.findByCategorie(cat1);
 		theModel.addAttribute("pets", list);
 		return "pets";
 	}
 	
-	@GetMapping("/pet/list/dept")
-	public String filterPetListDept(@RequestParam("dept") String dept, Model theModel) {
+	@GetMapping("/pet/list/{dept}")
+	public String filterPetListDept(@PathVariable("dept") String dept, Model theModel) {
 		Departement dept1 = deptService.findbyName(dept);
 		List<Pet> list = petService.findByDepartement(dept1);
 		theModel.addAttribute("pets", list);

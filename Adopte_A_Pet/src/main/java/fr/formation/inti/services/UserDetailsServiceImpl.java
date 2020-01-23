@@ -1,5 +1,6 @@
 package fr.formation.inti.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,25 +20,41 @@ import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
-    @Autowired
-    private IUserRepository userRepository;
-    @Autowired
-    private ITitleRepository titleRepository;
+public class UserDetailsServiceImpl implements UserDetailsService {
+	@Autowired
+	private IUserRepository userRepository;
+	@Autowired
+	private ITitleRepository titleRepository;
 
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
-        List<Title> title = titleRepository.findAll();
-        
-        if (user == null) throw new UsernameNotFoundException(username);
+	@Override
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String username) {
+		User user = userRepository.findByUsername(username);
+		List<Title> title = titleRepository.findAll();
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Title title1 : title){
-            grantedAuthorities.add(new SimpleGrantedAuthority(title1.getTitle()));
-        }
+		if (user == null)
+			throw new UsernameNotFoundException(username);
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-    }
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+		for (Title title1 : title) {
+			grantedAuthorities.add(new SimpleGrantedAuthority(title1.getTitle()));
+		}
+
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+				grantedAuthorities);
+	}
+
+	private List<GrantedAuthority> buildUserAuthority(Set<Title> userRoles) {
+
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+
+		// add user's authorities
+		for (Title userRole : userRoles) {
+			setAuths.add(new SimpleGrantedAuthority(userRole.getTitle()));
+		}
+
+		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
+
+		return Result;
+	}
 }
