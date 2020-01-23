@@ -68,7 +68,7 @@ public class PetServiceImpl implements IPetService {
 	}
 
 	@Override
-	public Pet findByDepartement(Departement dept) {
+	public List<Pet> findByDepartement(Departement dept) {
 		return petRepository.findByDepartement(dept);
 	}
 
@@ -78,7 +78,7 @@ public class PetServiceImpl implements IPetService {
 	}
 
 	@Override
-	public Pet findByCategorie(Categorie categorie) {
+	public List<Pet> findByCategorie(Categorie categorie) {
 		// TODO Auto-generated method stub
 		return petRepository.findByCategorie(categorie);
 	}

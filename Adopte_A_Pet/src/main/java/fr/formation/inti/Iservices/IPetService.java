@@ -21,8 +21,8 @@ public interface IPetService {
 	
 	public Page<Pet> getPage(Pageable pageable);
     
-    Pet findByDepartement(Departement dept);
+    List<Pet> findByDepartement(Departement dept);
     Pet findByUser(User user);
-    Pet findByCategorie(Categorie categorie);
+    List<Pet> findByCategorie(Categorie categorie);
     Pet findByIdpet(Integer idpet);
 }
