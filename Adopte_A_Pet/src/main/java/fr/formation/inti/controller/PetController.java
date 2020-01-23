@@ -25,10 +25,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import fr.formation.inti.Iservices.ICategorieService;
+import fr.formation.inti.Iservices.IDepartementService;
 import fr.formation.inti.Iservices.IPetService;
 import fr.formation.inti.Iservices.ISecurityService;
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.dao.IUserRepository;
+import fr.formation.inti.entities.Categorie;
+import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.Pet;
 import fr.formation.inti.validation.UserValidator;
 
@@ -50,6 +54,12 @@ public class PetController {
 	
 	@Autowired
 	private IPetService petService;
+	
+	@Autowired
+	private ICategorieService catService;
+	
+	@Autowired
+	private IDepartementService deptService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -159,5 +169,20 @@ public class PetController {
 		return list;
 	}
 
+	@GetMapping("/pet/list/cat")
+	public String filterPetListCat(@RequestParam("cat") String cat, Model theModel) {
+		Categorie cat1 = catService.findByCategorie(cat);
+		List<Pet> list = petService.findByCategorie(cat1);
+		theModel.addAttribute("pets", list);
+		return "pets";
+	}
+	
+	@GetMapping("/pet/list/dept")
+	public String filterPetListDept(@RequestParam("dept") String dept, Model theModel) {
+		Departement dept1 = deptService.findbyName(dept);
+		List<Pet> list = petService.findByDepartement(dept1);
+		theModel.addAttribute("pets", list);
+		return "pets";
+	}
 	
 }

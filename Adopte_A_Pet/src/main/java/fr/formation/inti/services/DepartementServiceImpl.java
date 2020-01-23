@@ -39,6 +39,11 @@ public class DepartementServiceImpl implements IDepartementService {
 		return departementRepository.findByDeptid(deptid);
 	}
 
+	@Override
+	public Departement findbyName(String dept) {
+		return departementRepository.findByName(dept);
+	}
+
 
 	
 }
