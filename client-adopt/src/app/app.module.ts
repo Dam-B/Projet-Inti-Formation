@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BasicAuthHtppInterceptorService} from './shared';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PetsComponent } from './pets/pets.component';
+import { FormulaireComponent } from './formulaire/formulaire.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PetsComponent } from './pets/pets.component';
     ImageAccueilComponent,
     LoginComponent,
     RegistrationComponent,
-    PetsComponent
+    PetsComponent,
+    FormulaireComponent
   ],
   imports: [
     BrowserModule,
