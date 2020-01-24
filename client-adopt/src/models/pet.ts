@@ -7,7 +7,7 @@ import { Departement } from "./departement";
 export class Pet{
     idpet : number;
     categorie :Categorie = new Categorie();
-    user : User = new User();
+
     name : String;
     race : String;
     age: String;

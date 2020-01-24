@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./formulaire.component.css']
 })
 export class FormulaireComponent implements OnInit {
-    public types = [ 'Email', 'Last Name'];
+    public types = [ 'Name', 'Race','Age'];
     public name: string;
     public race: string;
     public age:number;
@@ -39,14 +39,21 @@ export class FormulaireComponent implements OnInit {
   */
  saveOrUpdatePet(addPetForm: NgForm){
   this.displayMessageModal = false;
+  console.log(addPetForm)
   if(!addPetForm.valid){
-    this.buildMessageModal('Error in the form');
+    console.log("ùa")
+    return this.buildMessageModal('Error in the form');
   }
   if(this.actionButton && this.actionButton === 'Save'){
+    console.log("gdrga")
       this.saveNewPet(this.pet);
   }else if(this.actionButton && this.actionButton === 'Update'){
+    console.log("ùasfefzef")
       this.updatePet(this.pet);
+  }else {
+    console.log("EH BAH NAN")
   }
+  
   this.titleSaveOrUpdate = 'Add New Customer Form';
   this.actionButton = 'Save';
 }
