@@ -1,4 +1,4 @@
-package fr.formation.inti.controller;
+package fr.formation.inti.OldMethod;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

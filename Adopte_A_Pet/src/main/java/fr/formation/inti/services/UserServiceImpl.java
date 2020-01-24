@@ -1,5 +1,6 @@
 package fr.formation.inti.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.dao.IUserRepository;
+import fr.formation.inti.entities.Departement;
 import fr.formation.inti.entities.Title;
 import fr.formation.inti.entities.User;
 
@@ -20,10 +22,9 @@ public class UserServiceImpl implements IUserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public Integer save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return user.getIduser();
+    public User save(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));       
+        return userRepository.save(user); 
     }
 
     @Override
@@ -54,13 +55,18 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public User findByTitle(Title title) {
+	public List<User> findByTitle(Title title) {
 		return userRepository.findByTitle(title);
 	}
 
 	@Override
 	public Optional<User> findById(Integer id) {
 		return userRepository.findById(id);
+	}
+
+	@Override
+	public List<User> findByDepartement(Departement departement) {
+		return userRepository.findByDepartement(departement);
 	}
 
 

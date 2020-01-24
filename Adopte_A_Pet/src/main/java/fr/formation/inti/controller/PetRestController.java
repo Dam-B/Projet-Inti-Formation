@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.inti.Iservices.ICategorieService;
 import fr.formation.inti.Iservices.IDepartementService;
 import fr.formation.inti.Iservices.IPetService;
 import fr.formation.inti.dao.IPetRepository;
@@ -34,6 +34,9 @@ public class PetRestController {
 	
 	@Autowired
 	private IDepartementService deptService;
+	
+	@Autowired
+	private ICategorieService categorieService;
 	
 	@Autowired
 	private IPetRepository petRepository; 
@@ -80,11 +83,6 @@ public class PetRestController {
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Retourne le client ayec l'adresse email passée en paramètre.
-     * @param email
-     * @return
-     */
     @GetMapping("/searchByDepartement")
     public ResponseEntity<List<Pet>> searchPetByDepartement(@RequestParam("departement") String departementName) {
         //, UriComponentsBuilder uriComponentBuilder
@@ -94,82 +92,30 @@ public class PetRestController {
         }
         return new ResponseEntity<List<Pet>>(HttpStatus.NO_CONTENT);
     }
-    
-    /**
-     * Retourne la liste des clients ayant le nom passé en paramètre.
-     * @param lastName
-     * @return
-     */
-    @GetMapping("/searchByLastName")
-    public ResponseEntity<List<CustomerDTO>> searchBookByLastName(@RequestParam("lastName") String lastName) {
-        //,    UriComponentsBuilder uriComponentBuilder
-        List<Customer> customers = customerSe,rvice.findCustomerByLastName(lastName);
-        if (customers != null && !CollectionUtils.isEmpty(customers)) {
-            List<CustomerDTO> customerDTOs = customers.stream().map(customer -> {
-                return mapCustomerToCustomerDTO(customer);
-            }).collect(Collectors.toList());
-            return new ResponseEntity<List<CustomerDTO>>(customerDTOs, HttpStatus.OK);
+    @GetMapping("/searchByCategorie")
+    public ResponseEntity<List<Pet>> searchPetByCategorie(@RequestParam("categorie") String categorieName) {
+        //, UriComponentsBuilder uriComponentBuilder
+        List<Pet> pet = petService.findByCategorie(categorieService.findByCategorie(categorieName));
+        if (pet != null && !CollectionUtils.isEmpty(pet)) {
+            return new ResponseEntity<List<Pet>>(pet, HttpStatus.OK);
         }
-        return new ResponseEntity<List<CustomerDTO>>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<List<Pet>>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/searchById/{idpet}")
+    public ResponseEntity<Pet> searchPetById(@PathVariable Integer petId) {
+        //, UriComponentsBuilder uriComponentBuilder
+        Pet pet = petService.findByIdpet(petId);
+        if (pet != null) {
+            return new ResponseEntity<Pet>(pet, HttpStatus.OK);
+        }
+        return new ResponseEntity<Pet>(HttpStatus.NO_CONTENT);
     }
     
-    /**
-     * Envoie un mail à un client. L'objet MailDTO contient l'identifiant et l'email du client concerné, l'objet du mail et le contenu du message.
-     * @param loanMailDto
-     * @param uriComponentBuilder
-     * @return
-     */
-    @PutMapping("/sendEmailToCustomer")
-    public ResponseEntity<Boolean> sendMailToCustomer(@RequestBody MailDTO loanMailDto, UriComponentsBuilder uriComponentBuilder) {
+    @GetMapping("/countPet")
+    public ResponseEntity<Integer> countPet() {    
+        return new ResponseEntity<Integer>(HttpStatus.OK);
+    } 
 
-        Customer customer = customerService.findCustomerById(loanMailDto.getCustomerId());
-        if (customer == null) {
-            String errorMessage = "The selected Customer for sending email is not found in the database";
-            LOGGER.info(errorMessage);
-            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);
-        } else if (customer != null && StringUtils.isEmpty(customer.getEmail())) {
-            String errorMessage = "No existing email for the selected Customer for sending email to";
-            LOGGER.info(errorMessage);
-            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_FOUND);
-        }
-
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setFrom(loanMailDto.MAIL_FROM);
-        mail.setTo(customer.getEmail());
-        mail.setSentDate(new Date());
-        mail.setSubject(loanMailDto.getEmailSubject());
-        mail.setText(loanMailDto.getEmailContent());
-
-        try {
-            javaMailSender.send(mail);
-        } catch (MailException e) {
-            return new ResponseEntity<Boolean>(false, HttpStatus.FORBIDDEN);
-        }
-
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-//    /**
-//     * Transforme une entity Customer en un POJO CustomerDTO
-//     * 
-//     * @param customer
-//     * @return
-//     */
-//    private CustomerDTO mapCustomerToCustomerDTO(Customer customer) {
-//        ModelMapper mapper = new ModelMapper();
-//        CustomerDTO customerDTO = mapper.map(customer, CustomerDTO.class);
-//        return customerDTO;
-//    }
-//
-//    /**
-//     * Transforme un POJO CustomerDTO en une entity Customer
-//     * 
-//     * @param customerDTO
-//     * @return
-//     */
-//    private Customer mapCustomerDTOToCustomer(CustomerDTO customerDTO) {
-//        ModelMapper mapper = new ModelMapper();
-//        Customer customer = mapper.map(customerDTO, Customer.class);
-//        return customer;
-//    }
+   
+   
 }
