@@ -6,8 +6,11 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.inti.Iservices.IDepartementService;
+import fr.formation.inti.Iservices.ISecurityService;
 import fr.formation.inti.Iservices.ITitleService;
 import fr.formation.inti.Iservices.IUserService;
 import fr.formation.inti.dao.IUserRepository;
 import fr.formation.inti.entities.User;
+import fr.formation.inti.validation.UserValidator;
 
 
 
@@ -40,6 +45,12 @@ public class UserRestController {
 	@Autowired
 	private IDepartementService deptService;
 	
+
+	@Autowired
+	private ISecurityService securityService;
+
+	@Autowired
+	private UserValidator userValidator;
 	
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<User> getAll() {
@@ -110,7 +121,42 @@ public class UserRestController {
         }
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/registration")
+	public String registration(Model model) {
+		model.addAttribute("userForm", new User());
 
+		return "registration";
+	}
+
+	@PostMapping("/registration")
+	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+		userValidator.validate(userForm, bindingResult);
+		if (bindingResult.hasErrors()) {
+			return "registration";
+		}
+		userService.save(userForm);
+		securityService.autoLogin(userForm.getUsername(), userForm.getPassword());
+		return "redirect:/login";
+	}
+
+	@GetMapping("/login")
+	public String login(Model model, String error, String logout) {
+		if (error != null)
+			model.addAttribute("error", "Your username and password is invalid.");
+		if (logout != null)
+			model.addAttribute("message", "You have been logged out successfully.");
+		return "login";
+
+	}
+
+	@PostMapping("/logout")
+	public String logout(Model model, String error, String logout) {
+		if (error != null)
+			model.addAttribute("error", "Your username and password is invalid.");
+		if (logout != null)
+			model.addAttribute("message", "You have been logged out successfully.");
+		return "login";
+	}
    
    
 }
