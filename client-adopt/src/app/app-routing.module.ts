@@ -13,7 +13,7 @@ const routes: Routes = [
 {path:'', redirectTo:'home', pathMatch:'full'},
 {path:'registration', component: RegistrationComponent},
 {path:'logout', redirectTo:'home', pathMatch:'full'},
-{path:'formuairePet', component : FormulaireComponent}
+{path:'formulairePet', component : FormulaireComponent}
 ];
 
 @NgModule({
