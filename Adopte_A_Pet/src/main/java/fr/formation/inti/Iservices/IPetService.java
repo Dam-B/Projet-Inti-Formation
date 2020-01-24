@@ -13,8 +13,8 @@ import fr.formation.inti.entities.User;
 
 public interface IPetService {
 	
-    void save(Pet pet);
-    void update(Pet pet);
+    Pet save(Pet pet);
+    Pet update(Pet pet);
     void delete(Integer id);
     public List<Pet> findAllPet();
     public List<Pet> getAllPet(Integer pageNo, Integer pageSize, String sortBy);

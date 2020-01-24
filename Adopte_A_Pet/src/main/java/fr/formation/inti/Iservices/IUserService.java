@@ -8,7 +8,7 @@ import fr.formation.inti.entities.User;
 public interface IUserService {
 	
     Integer save(User user);
-    void update(User user);
+    User update(User user);
     void delete(Integer id);
     Optional<User> findById(Integer id);
     User findByUsername(String username);

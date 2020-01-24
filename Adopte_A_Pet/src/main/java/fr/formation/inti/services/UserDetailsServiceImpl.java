@@ -1,3 +1,5 @@
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //<<<<<<< HEAD
 ////package fr.formation.inti.services;
 ////
@@ -43,6 +45,12 @@
 //////    }
 ////}
 //=======
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 //package fr.formation.inti.services;
 //
 //import java.util.ArrayList;
@@ -103,4 +111,12 @@
 //		return Result;
 //	}
 //}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //>>>>>>> 917b40a0e6c3dce04843f13b87748c8c55c1eb50
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes

@@ -32,14 +32,14 @@ public class UserServiceImpl implements IUserService {
     }
 
 	@Override
-	public void update(User user) {
+	public User update(User user) {
 		String password = user.getPassword();
 		String username = user.getUsername();
 		Integer id = user.getIduser();
 		User userDeBase = userRepository.findByIduser(id);
 		userDeBase.setPassword(password);
 		userDeBase.setUsername(username);
-		userRepository.save(userDeBase);
+		return userRepository.save(userDeBase);
 
 	}
 

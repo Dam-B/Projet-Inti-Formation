@@ -30,14 +30,14 @@ public class PetServiceImpl implements IPetService {
 	private IUserRepository userRepository;
 	
 	@Override
-	public void save(Pet pet) {
-		petRepository.save(pet);
+	public Pet save(Pet pet) {
+		return petRepository.save(pet);
 		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void update(Pet pet) {
+	public Pet update(Pet pet) {
 		
 		Adoption adoption = (Adoption) pet.getAdoptions();
 		String age = pet.getAge();
@@ -57,7 +57,7 @@ public class PetServiceImpl implements IPetService {
 		petDeBase.setTransferts((Set<Transfert>) transfert);
 		petDeBase.setUser(user);
 		
-		petRepository.save(petDeBase);
+		return petRepository.save(petDeBase);
 		
 	}
 
