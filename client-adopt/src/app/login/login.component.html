@@ -1,5 +1,4 @@
-<body>
-
+<body style="margin:auto">
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -9,7 +8,7 @@
 					</span>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-                        <input id="first-name" class="input100" type="text" name="username" placeholder="User name" [(ngModel)]="username">
+                        <input id="username" class="input100" type="text" name="username" placeholder="User name" [(ngModel)]="username">
                         <span class="focus-input100"></span>
                     </div>
                     <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
@@ -34,7 +33,7 @@
                     </div>
 
                     <div class="w-full text-center">
-                        <a href="/registration" class="txt3">
+                        <a routerLink="/registration" class="txt3">
 							Sign Up
 						</a>
                     </div>
