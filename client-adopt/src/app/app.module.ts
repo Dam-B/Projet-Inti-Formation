@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ImageAccueilComponent } from './image-accueil/image-accueil.component';
 import { LoginComponent } from './login/login.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 import { BasicAuthHtppInterceptorService} from './shared';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -23,7 +23,7 @@ import { PetsComponent } from './pets/pets.component';
     HomeComponent,
     ImageAccueilComponent,
     LoginComponent,
-    SignInComponent,
+    RegistrationComponent,
     PetsComponent
   ],
   imports: [
