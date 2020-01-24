@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PetsComponent } from './pets/pets.component';
 import { RegistrationComponent } from './registration/registration.component';
+import {FormulaireComponent} from './formulaire/formulaire.component'
 
 const routes: Routes = [
 {path: 'home', component: HomeComponent},
@@ -11,7 +12,8 @@ const routes: Routes = [
 {path: 'pets', component: PetsComponent},
 {path:'', redirectTo:'home', pathMatch:'full'},
 {path:'registration', component: RegistrationComponent},
-{path:'logout', redirectTo:'home', pathMatch:'full'}
+{path:'logout', redirectTo:'home', pathMatch:'full'},
+{path:'formuairePet', component : FormulaireComponent}
 ];
 
 @NgModule({
