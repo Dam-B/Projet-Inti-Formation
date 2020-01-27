@@ -16,15 +16,15 @@ public class JwtUserDetailsService implements UserDetailsService {
 //c'est ici qu'on compare les users avec ceux de la BDD
 	@Autowired
 	private IUserRepository userRepository;
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUsername(username);
-		if (user != null) {
-			return new User(user.getUsername(), user.getPassword(),
-					user.getAuthorities());
+//		User user = userRepository.findByUsername(username);
+		if ("user".equals(username)) {
+			User user = userRepository.findByUsername(username);
+			return new User("user", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6", new ArrayList<>());
 		} else {
-			throw new UsernameNotFoundException("User not found with username: " + username);
+			return null;
 		}
 	}
-
 }
