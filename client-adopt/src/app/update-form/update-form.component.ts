@@ -53,8 +53,8 @@ export class EditComponent implements OnInit {
   }
 
   gotoList() {
-    if (this.person) {
-      this.router.navigate(['/search', {term: this.person.name} ]);
+    if (this.pet) {
+      this.router.navigate(['/search', {term: this.pet.name} ]);
     } else {
       this.router.navigate(['/search']);
     }
