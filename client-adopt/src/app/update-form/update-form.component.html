@@ -1,6 +1,6 @@
 <div *ngIf="pet">
     <h3>Editing : {{editName}}</h3>
-    <form (ngSubmit)="save()" #editForm="ngForm">
+    <form (ngSubmit)="save()" [formGroup]="registerForm">
         <div>
             <label>Id: {{p.idpet}}</label>
         </div>
@@ -13,17 +13,16 @@
         </div>
         <div class="form-group">
             <label>Age</label>
-            <input type="text" formControlName="Age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }" />
+            <input type="number" formControlName="Age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }" />
             <div *ngIf="submitted && f.Age.errors" class="invalid-feedback">
                 <div *ngIf="f.Age.errors.required">Age is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label>Email</label>
-            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">Email is required</div>
-                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            <label>race</label>
+            <input type="text" formControlName="race" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.race.errors }" />
+            <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">race is required</div>
             </div>
         </div>
         <button type="submit" id="save" [disabled]="!editForm.form.valid">Save</button>

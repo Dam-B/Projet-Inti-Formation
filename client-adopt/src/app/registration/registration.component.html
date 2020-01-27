@@ -40,16 +40,16 @@
                                     <input type="text" name="city" id="city" />
                                 </div>-->
                                 <div class="form-input">
-                                    <label for="Pseudo" class="required">Pseudo</label>
-                                    <input type="text" name="Pseudo" id="Pseudo" />
+                                    <label for="username" class="required">Username</label>
+                                    <input [(ngModel)]="user.username" type="text" name="username" id="username" />
                                 </div>
                                 <div class="form-input">
                                     <label for="password" class="required">Password</label>
-                                    <input type="password" name="password" id="password" />
+                                    <input [(ngModel)]="user.password" type="password" name="password" id="password" />
                                 </div>
                                 <div class="form-input">
                                     <label for="confirm_password" class="required">Confirm Password</label>
-                                    <input type="confirm_password" name="confirm_password" id="confirm_password" />
+                                    <input type="password" name="confirm_password" id="confirm_password" />
                                     <!-- Mettre ici code de confirmation du password -->
                                 </div>
                             </div>

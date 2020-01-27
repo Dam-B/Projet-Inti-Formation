@@ -59,6 +59,12 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
 	public User(Departement departement, Title title, String username, String password) {
 		this.departement = departement;
 		this.title = title;
@@ -99,7 +105,7 @@ public class User implements java.io.Serializable {
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "deptid", nullable = false)
+	@JoinColumn(name = "deptid")
 	public Departement getDepartement() {
 		return this.departement;
 	}
@@ -119,7 +125,7 @@ public class User implements java.io.Serializable {
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idtitle", nullable = false)
+	@JoinColumn(name = "idtitle")
 	public Title getTitle() {
 		return this.title;
 	}

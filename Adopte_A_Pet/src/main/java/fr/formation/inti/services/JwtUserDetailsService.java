@@ -23,18 +23,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 //c'est ici qu'on compare les users avec ceux de la BDD
 	@Autowired
 	private IUserRepository userRepository;
-<<<<<<< HEAD
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		User user = userRepository.findByUsername(username);
-		if ("user".equals(username)) {
-			User user = userRepository.findByUsername(username);
-			return new User("user", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6", new ArrayList<>());
-		} else {
-			return null;
-		}
-=======
 	@Autowired
 	private ITitleRepository titleRepository;
 	@Override
@@ -48,6 +37,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
->>>>>>> bf2fc22ef6b8a2b9d7d32f5900313a4505e69ba0
+
 	}
 }

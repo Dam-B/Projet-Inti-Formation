@@ -14,8 +14,8 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
   }
-  save(user : User){
-    this.userService.saveUser(user).subscribe(
+  save(){
+    this.userService.save(this.user).subscribe(
       (result: User) => {
         if(result.iduser){
             console.log('Save operation correctly done');

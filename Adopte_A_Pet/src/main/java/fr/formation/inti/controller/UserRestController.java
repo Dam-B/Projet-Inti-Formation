@@ -1,6 +1,7 @@
 package fr.formation.inti.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.inti.Registration;
 import fr.formation.inti.Iservices.IDepartementService;
 import fr.formation.inti.Iservices.ISecurityService;
 import fr.formation.inti.Iservices.ITitleService;
@@ -59,13 +61,14 @@ public class UserRestController {
 	
 	
 	@PostMapping("/addUser")
-    public ResponseEntity<User> createNewUser(@RequestBody User userRequest) {
+    public ResponseEntity<User> createNewUser(@RequestBody Registration userdata) {
         //, UriComponentsBuilder uriComponentBuilder
-        User existingUser = userService.findByIduser(userRequest.getIduser());
+		User existingUser = userService.findByUsername(userdata.getUsername());
         if (existingUser != null) {
             return new ResponseEntity<User>(HttpStatus.CONFLICT);
         }
 //        petRequest.set(LocalDate.now()); NE PAS OUBLIER DE LE RECUP POUR LE USER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        User userRequest = new User(userdata.getUsername(),userdata.getPassword());
         User userResponse = userService.save(userRequest);
         if (userResponse != null) {
             return new ResponseEntity<User>(userResponse, HttpStatus.CREATED);

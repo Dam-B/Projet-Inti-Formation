@@ -15,22 +15,24 @@ import fr.formation.inti.entities.User;
 
 @Service
 public class UserServiceImpl implements IUserService {
-    @Autowired
-    private IUserRepository userRepository;
+	@Autowired
+	private IUserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Override
-    public User save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));       
-        return userRepository.save(user); 
-    }
+	@Override
+	public User save(User user) {
+		System.out.println(user +"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		System.out.println(user+"========================================================================");
+		return userRepository.save(user);
+	}
 
-    @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
 
 	@Override
 	public User update(User user) {
@@ -46,9 +48,9 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void delete(Integer id) {
-		userRepository.deleteById(id);		
+		userRepository.deleteById(id);
 	}
-	
+
 	@Override
 	public User findByIduser(Integer iduser) {
 		return userRepository.findByIduser(iduser);
@@ -69,6 +71,4 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.findByDepartement(departement);
 	}
 
-
-	
 }
