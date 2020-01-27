@@ -78,8 +78,8 @@ public class PetRestController {
 
     
     @DeleteMapping("/deletePet/{idpet}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Integer petId) {
-        petService.delete(petId);
+    public ResponseEntity<String> deleteCustomer(@PathVariable String idpet) {
+           petService.delete(Integer.parseInt(idpet));
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 
