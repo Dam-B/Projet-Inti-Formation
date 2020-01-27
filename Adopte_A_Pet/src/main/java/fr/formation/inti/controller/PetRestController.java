@@ -102,9 +102,9 @@ public class PetRestController {
         return new ResponseEntity<List<Pet>>(HttpStatus.NO_CONTENT);
     }
     @GetMapping("/searchById/{idpet}")
-    public ResponseEntity<Pet> searchPetById(@PathVariable Integer petId) {
+    public ResponseEntity<Pet> searchPetById(@PathVariable String idpet) {
         //, UriComponentsBuilder uriComponentBuilder
-        Pet pet = petService.findByIdpet(petId);
+        Pet pet = petService.findByIdpet(Integer.parseInt(idpet));
         if (pet != null) {
             return new ResponseEntity<Pet>(pet, HttpStatus.OK);
         }

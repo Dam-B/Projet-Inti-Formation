@@ -16,7 +16,7 @@ const routes: Routes = [
 {path:'registration', component: RegistrationComponent},
 {path:'logout', redirectTo:'home', pathMatch:'full'},
 {path:'formulairePet', component : FormulaireComponent},
-{path:'formulaireUpdate', component : UpdateFormComponent}
+{path:'formulaireUpdate/:idpet', component : UpdateFormComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <table class="table table-striped table-bordered">
-    <param value="${pets}" />
     <th>idpet</th>
     <th>Name</th>
     <th>Race</th>
@@ -14,9 +13,8 @@
         <td>{{p.age}}</td>
         <td>
             <!-- display the update link -->
-            <a>
+            <a [routerLink]="['/formulaireUpdate', p.idpet]">
                 <i class="fas fa-user-edit "></i>
-                <param name="idpet " value="${pet.idpet} " />
             </a> |
             <a (click)="deletePet(p.idpet) ">
                 <i class="fas fa-user-times "></i>

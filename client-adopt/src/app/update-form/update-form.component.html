@@ -1,29 +1,30 @@
-<div *ngIf="person">
+<div *ngIf="pet">
     <h3>{{editName}}</h3>
     <form (ngSubmit)="save()" #editForm="ngForm">
         <div>
-            <label>Id:</label> {{person.id}}
+            <label>Id:</label> {{p.idpet}}
         </div>
         <div>
             <label>Name:</label>
-            <input [(ngModel)]="editName" name="name" id="name" placeholder="name" required="true" #name="ngModel" />
+            <input [(ngModel)]="editName" name="name" id="name" value="pet.name" required="true" #name="ngModel" />
         </div>
         <div [hidden]="name.valid || name.pristine" style="color: red">
             Name is required
         </div>
         <div>
-            <label>Phone:</label>
-            <input [(ngModel)]=" editPhone " name="phone " id="phone " placeholder="Phone " />
+            <label>race:</label>
+            <input [(ngModel)]=" editRace " name="race " id="race " value="pet.race" />
         </div>
-        <fieldset>
-            <legend>Address:</legend>
-            <address>
-              <input [(ngModel)]="editAddress.street" name="street" id="street"><br/>
-              <input [(ngModel)]="editAddress.city" name="city" id="city">,
-              <input [(ngModel)]="editAddress.state" name="state" id="state" size="2">
-              <input [(ngModel)]="editAddress.zip" name="zip" id="zip" size="5">
-  </address>
-        </fieldset>
+        <div [hidden]="race.valid || race.pristine" style="color: red">
+            Race is required
+        </div>
+        <div>
+            <label>Age:</label>
+            <input [(ngModel)]=" editAge " name="Age " id="Age " value="pet.age" />
+        </div>
+        <div [hidden]="Age.valid || Age.pristine" style="color: red">
+            Age is required
+        </div>
         <button type="submit" id="save" [disabled]="!editForm.form.valid">Save</button>
         <button (click)="cancel() " id="cancel ">Cancel</button>
     </form>

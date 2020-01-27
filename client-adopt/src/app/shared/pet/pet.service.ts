@@ -42,7 +42,7 @@ export class PetService {
    * @param isbn
    */
   searchPetByDepartment(departementName: String): Observable<Pet[]>{
-      return  this.http.get<Pet[]>(`http://localhost:8080/pets/searchByDepartement`);
+      return  this.http.get<Pet[]>(`http://localhost:8080/pets/searchByDepartement/`+departementName);
   }
   
  /**
@@ -50,14 +50,14 @@ export class PetService {
   * @param title
   */
   searchPetByCategorie(categorieName: string): Observable<Pet[]>{
-          return this.http.get<Pet[]>(`http://localhost:8080/pets/searchByCategorie`);
+          return this.http.get<Pet[]>(`http://localhost:8080/pets/searchByCategorie/`+categorieName);
   }
   /**
   * Search books by title
   * @param title
   */
  searchPetById(idpet : number): Observable<Pet>{
-  return this.http.get<Pet>(`http://localhost:8080/pets/searchByID`+ idpet);
+  return this.http.get<Pet>(`http://localhost:8080/pets/searchById/`+ idpet);
 }
  /**
   * Search books by title

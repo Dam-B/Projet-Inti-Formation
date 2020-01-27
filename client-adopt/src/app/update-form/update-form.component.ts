@@ -23,8 +23,8 @@ export class UpdateFormComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params['idpet']; // (+) converts string 'id' to a number
-      this.petService.searchPetById(this.idpet).subscribe(pet => {
+      const idpet = + params['idpet']; // (+) converts string 'id' to a number
+      this.petService.searchPetById(idpet).subscribe(pet => {
         if (pet) {
           this.editName = pet.name;
           this.editRace = pet.race;
