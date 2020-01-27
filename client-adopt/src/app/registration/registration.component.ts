@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/models/user';
+import { UserService } from 'src/app/shared/user/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  user = new User();
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
-
+  save(user : User){
+    this.userService.saveUser(user).subscribe(
+      (result: User) => {
+        if(result.iduser){
+            console.log('Save operation correctly done');
+        }
+     },
+     error => {
+         console.log('An error occurs when saving the customer data');
+     }
+    );
+  }
 }

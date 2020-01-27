@@ -49,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/authenticate").permitAll() // Add here all route allowed for all
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+				.antMatchers(HttpMethod.POST,"/registration" ,"/login").permitAll()
 				.antMatchers("/pet/**").permitAll()
 				.antMatchers(HttpMethod.DELETE, "/petlist").access("hasTitle('ADMIN')")
 				// all other requests need to be authenticated

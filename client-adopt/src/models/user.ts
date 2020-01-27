@@ -14,7 +14,6 @@ export class User{
     password : String;
     dateCreate : Date;
     dateClose : Date;
-    individual : Individual = new Individual();
-    centre : Centre = new Centre();
+
     
 }

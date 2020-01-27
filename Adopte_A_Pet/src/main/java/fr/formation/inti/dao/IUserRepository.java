@@ -10,7 +10,7 @@ import fr.formation.inti.entities.User;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
 	User findByIduser(Integer id);
-	org.springframework.security.core.userdetails.User findByUsername(String username);
+	User findByUsername(String username);
 //    User findByIdtitle(String idtitle);
     List<User> findByTitle(Title title);
     List<User> findByDepartement(Departement departement);
