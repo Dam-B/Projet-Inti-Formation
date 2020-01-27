@@ -15,9 +15,10 @@
         <td>{{p.age}}</td>
         <td>
             <!-- display the update link -->
-            <a routerLink="/formulairePet"> <i class="fas fa-user-edit"></i>
+            <a routerLink="/formulaireUpdate"> <i class="fas fa-user-edit"></i>
             </a> |
-            <a onclick="deleteP"><param name="idpet" value="${e.idpet}" />
+            <a onclick="deleteP">
+                <param name="idpet" value="${e.idpet}" />
                 <i class="fas fa-user-times"></i>
             </a>
         </td>

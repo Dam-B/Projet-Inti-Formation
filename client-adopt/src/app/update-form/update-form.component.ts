@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  templateUrl: './update-form.component.html',
+  styleUrls: ['./update-form.component.css']
 })
 export class EditComponent implements OnInit {
   editName: String;
