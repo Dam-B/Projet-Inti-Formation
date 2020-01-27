@@ -31,7 +31,7 @@ import fr.formation.inti.validation.UserValidator;
 
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/users")
 public class UserRestController {
 	@Autowired
 	private IUserService userService;
@@ -124,7 +124,6 @@ public class UserRestController {
     @GetMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("userForm", new User());
-
 		return "registration";
 	}
 
