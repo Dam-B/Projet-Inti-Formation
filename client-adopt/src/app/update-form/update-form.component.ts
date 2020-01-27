@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './update-form.component.html',
   styleUrls: ['./update-form.component.css']
 })
-export class EditComponent implements OnInit {
+export class UpdateFormComponent implements OnInit {
   editName: String;
   editRace: String;
   editAges: String;
