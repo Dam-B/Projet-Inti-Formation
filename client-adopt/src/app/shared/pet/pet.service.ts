@@ -33,8 +33,8 @@ export class PetService {
     * Delete an existing Book object in the Backend server data base.
     * @param book
     */
-    deletePet(pet: Pet): Observable<string>{
-        return this.http.delete<string>(`http://localhost:8080/pets/updatePet`+pet.idpet);
+    deletePet(idpet:number): Observable<string>{
+        return this.http.delete<string>(`http://localhost:8080/pets/deletePet/`+idpet);
     }
   
   /**

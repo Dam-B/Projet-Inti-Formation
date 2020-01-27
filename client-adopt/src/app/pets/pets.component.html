@@ -1,24 +1,26 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <table class="table table-striped table-bordered">
     <tr>
-        <th hidden="true">idPet</th>
+        <th>idpet</th>
         <th>Name</th>
         <th>Race</th>
         <th>Age</th>
     </tr>
 
     <!-- loop over and print our customers -->
-    <tr *ngFor="let p of pets">
-        <td hidden="true">{{p.idpet}}</td>
+    <tr *ngFor="let p of pets" var="p">
+        <td>{{p.idpet}}</td>
         <td>{{p.name}}</td>
         <td>{{p.race}}</td>
         <td>{{p.age}}</td>
         <td>
             <!-- display the update link -->
-            <a routerLink="/formulaireUpdate"> <i class="fas fa-user-edit"></i>
-            </a>
-            <a onclick="deleteP">
-                <param name="idpet" value="${e.idpet}" />
+            <a routerLink="/formulaireUpdate">
+                <i class="fas fa-user-edit"></i>
+                <param name="idpet" value="${p.idpet}" />
+            </a> |
+            <a (click)="deletePet()">
+                <param name="idpet" value={{Pet.idpet}} />
                 <i class="fas fa-user-times"></i>
             </a>
         </td>

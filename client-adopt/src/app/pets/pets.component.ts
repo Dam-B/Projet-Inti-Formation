@@ -30,22 +30,8 @@ categorie: string;
 * Delete an existing customer
 * @param customer
 */
-deletePet(pet: Pet){
-  this.spinner.show();
-  this.displayMessageModal = true;
-  this.petService.deletePet(pet).subscribe(
-          result => {
-              for( var i = 0; i < this.searchPetResult.length; i++){ 
-                  if ( this.searchPetResult[i].idpet === pet.idpet) {
-                      this.searchPetResult.splice(i, 1); 
-                  }
-              }
-              this.spinner.hide();
-              this.buildMessageModal('End of delete operation');
-              if(this.searchPetResult.length == 0){
-                  this.isNoResult = true;
-              }
-          });
+deletePet(idpet:number){
+  this.petService.deletePet(idpet).subscribe()
 }
 /**
 * Construit le message à afficher suite à une action utilisateur.
