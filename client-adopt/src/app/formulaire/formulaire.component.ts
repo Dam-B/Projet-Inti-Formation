@@ -154,7 +154,7 @@ searchPetByType(searchPetResult){
   }
   if(this.displayType === 'Name'){
       this.searchPetResult = [];
-      this.petService.searchPetById(this.pet).subscribe(
+      this.petService.searchPetById(this.pet.idpet).subscribe(
               result => {
                   if(result && result != null){
                       this.searchPetResult.push(result);
