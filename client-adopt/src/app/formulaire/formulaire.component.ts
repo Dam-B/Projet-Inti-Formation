@@ -121,27 +121,7 @@ updateResearchPetTab(pet: Pet){
     }
 }
 
-/**
-* Delete an existing customer
-* @param customer
-*/
-deletePet(pet: Pet){
-    this.spinner.show();
-    this.displayMessageModal = false;
-    this.petService.deletePet(pet).subscribe(
-            result => {
-                for( var i = 0; i < this.searchPetResult.length; i++){ 
-                    if ( this.searchPetResult[i].idpet === pet.idpet) {
-                        this.searchPetResult.splice(i, 1); 
-                    }
-                }
-                this.spinner.hide();
-                this.buildMessageModal('End of delete operation');
-                if(this.searchPetResult.length == 0){
-                    this.isNoResult = true;
-                }
-            });
-}
+
 
 /**
 * Set the selected customer as the customer to be updated

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <table class="table table-striped table-bordered">
     <tr>
         <th hidden="true">idPet</th>
@@ -14,9 +15,9 @@
         <td>{{p.age}}</td>
         <td>
             <!-- display the update link -->
-            <a> <i class="fas fa-user-edit"></i>
+            <a routerLink="/formulairePet"> <i class="fas fa-user-edit"></i>
             </a> |
-            <a>
+            <a onclick="deleteP"><param name="idpet" value="${e.idpet}" />
                 <i class="fas fa-user-times"></i>
             </a>
         </td>

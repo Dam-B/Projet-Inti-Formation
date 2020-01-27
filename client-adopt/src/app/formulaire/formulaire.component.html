@@ -10,11 +10,12 @@
                 </div>
                 <div class="signup-form">
                     <form method="POST" class="register-form" id="register-form" #addPetForm="ngForm" (ngSubmit)="saveOrUpdatePet(addPetForm)">
+
                         <div class="form-row">
                             <div class="form-group">
-                                <div class="form-input">
+                                <div class="form-input ${status.error ? 'has-error' : ''}">
                                     <label for="Name" class="required">name</label>
-                                    <input type="text" name="Name" id="Name" required [(ngModel)]="pet.name" />
+                                    <input type="text" name="Name" path="name" id="Name" required [(ngModel)]="pet.name" />
                                 </div>
                                 <div class="form-input">
                                     <label for="Race" class="required">Race</label>
@@ -41,7 +42,7 @@
             <th></th>
             <th></th>
         </tr>
-        <tr class="{{customer.id}}" *ngFor="let customer of searchCustomersResult">
+        <tr class="{{pet.idpet}}" *ngFor="let customer of searchCustomersResult">
             <td>{{Pet.name}}</td>
             <td>{{Pet.Race}}</td>
             <td>{{Pet.Age}}</td>

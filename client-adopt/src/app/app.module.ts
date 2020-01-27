@@ -15,6 +15,8 @@ import { BasicAuthHtppInterceptorService} from './shared';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PetsComponent } from './pets/pets.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
     LoginComponent,
     RegistrationComponent,
     PetsComponent,
-    FormulaireComponent
+    FormulaireComponent,
+    UpdateFormComponent
   ],
   imports: [
     BrowserModule,

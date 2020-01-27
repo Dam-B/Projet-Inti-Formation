@@ -56,8 +56,8 @@ export class PetService {
   * Search books by title
   * @param title
   */
- searchPetById(pet : Pet): Observable<Pet>{
-  return this.http.get<Pet>(`http://localhost:8080/pets/searchByID`+pet.idpet);
+ searchPetById(idpet : number): Observable<Pet>{
+  return this.http.get<Pet>(`http://localhost:8080/pets/searchByID`+ idpet);
 }
  /**
   * Search books by title
