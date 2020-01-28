@@ -10,12 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./update-form.component.css']
 })
 export class UpdateFormComponent implements OnInit {
-  editName: String;
-  editRace: String;
-  editAges: String;
-  idpet: number;
+  petname: String;
   sub: Subscription;
-  pet:Pet;
+  pet:Pet = new Pet();
   registerForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -34,10 +31,8 @@ export class UpdateFormComponent implements OnInit {
       const idpet = + params['idpet']; // (+) converts string 'id' to a number
       this.petService.searchPetById(idpet).subscribe(pet => {
         if (pet) {
-          this.editName = pet.name;
-          this.editRace = pet.race;
-          this.editAges = pet.age;
-          this.pet = new Pet;
+          this.petname = pet.name;
+          this.pet = new Pet(pet);
         } else {
           this.gotoList();
         }
@@ -49,22 +44,19 @@ export class UpdateFormComponent implements OnInit {
     this.sub.unsubscribe();
   }
   cancel() {
-    this.router.navigate(['/search']);
+    this.router.navigate(['/pets']);
   }
 
   save() {
-    this.pet.name = this.editName;
-    this.pet.race = this.editRace;
-    this.pet.age = this.editAges;
     this.petService.savePet(this.pet);
     this.gotoList();
   }
 
   gotoList() {
     if (this.pet) {
-      this.router.navigate(['/search', {term: this.pet.name} ]);
+      this.router.navigate(['/pets' ]);
     } else {
-      this.router.navigate(['/search']);
+      this.router.navigate(['/pets']);
     }
   }
 }

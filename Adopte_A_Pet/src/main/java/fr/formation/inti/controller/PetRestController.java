@@ -111,6 +111,8 @@ public class PetRestController {
     public ResponseEntity<Pet> searchPetById(@PathVariable String idpet) {
         //, UriComponentsBuilder uriComponentBuilder
         Pet pet = petService.findByIdpet(Integer.parseInt(idpet));
+
+        System.out.println(pet.toString());
         if (pet != null) {
             return new ResponseEntity<Pet>(pet, HttpStatus.OK);
         }

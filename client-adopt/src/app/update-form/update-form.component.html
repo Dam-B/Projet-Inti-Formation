@@ -1,31 +1,55 @@
-<div *ngIf="pet">
-    <h3>Editing : {{editName}}</h3>
-    <form (ngSubmit)="save()" [formGroup]="registerForm">
+<body style="background-image: url(../../assets/img/cover.jpg);">
+
+    <div class="main">
+
         <div>
-            <label>Id: {{p.idpet}}</label>
+            <h2 style="text-align: center; margin-bottom: 10px;">
+                Editing : {{petname}}</h2>
         </div>
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" value="pet.name" [(ngModel)]="pet.name" />
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                <div *ngIf="f.name.errors.required">Name is required</div>
+
+        <div class="container" style="border: 2px solid black;">
+
+            <div class="signup-content" style="padding: 10px;">
+
+                <div class="signup-form">
+
+                    <form (ngSubmit)="save()" [formGroup]="registerForm">
+
+                        <div>
+                            <label>Id: {{pet.idpet}}</label>
+                        </div>
+
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" value="pet.name" [(ngModel)]="pet.name" />
+
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" formControlName="Age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }" [(ngModel)]="pet.age" value="pet.age" />
+
+                            <div *ngIf="submitted && f.Age.errors" class="invalid-feedback">
+                                <div *ngIf="f.Age.errors.required">Age is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>race</label>
+                            <input type="text" formControlName="race" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.race.errors }" [(ngModel)]="pet.race" value="pet.race" />
+                            <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">race is required</div>
+                            </div>
+                        </div>
+                        <div style="margin: 10px; padding: 10px;">
+                            <button style="margin: 10px; padding: 10px;" type="submit" class="submit" id="save">Save</button>
+                            <button style="margin: 10px; padding: 10px" (click)="cancel() " class="submit" id="cancel ">Cancel</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label>Age</label>
-            <input type="number" formControlName="Age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }" />
-            <div *ngIf="submitted && f.Age.errors" class="invalid-feedback">
-                <div *ngIf="f.Age.errors.required">Age is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>race</label>
-            <input type="text" formControlName="race" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.race.errors }" />
-            <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">race is required</div>
-            </div>
-        </div>
-        <button type="submit" id="save" [disabled]="!editForm.form.valid">Save</button>
-        <button (click)="cancel() " id="cancel ">Cancel</button>
-    </form>
-</div>
+    </div>
+</body>

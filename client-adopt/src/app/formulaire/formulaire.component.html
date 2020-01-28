@@ -1,13 +1,13 @@
 <body>
+
     <div class="main">
+        <div>
+            <h2 style="text-align: center; margin-bottom: 10px;">Add a Pet</h2>
+        </div>
         <div class="container">
+
             <div class="signup-content">
-                <div class="signup-img">
-                    <img src="../../assets/img/cover.jpeg" alt="">
-                    <div class="signup-img-content">
-                        <h2>Ajout d'un Pet</h2>
-                    </div>
-                </div>
+
                 <div class="signup-form">
                     <form method="POST" class="register-form" id="register-form" #addPetForm="ngForm" (ngSubmit)="saveOrUpdatePet(addPetForm)">
 
@@ -36,19 +36,4 @@
             </div>
         </div>
     </div>
-    <table>
-        <tr>
-            <th *ngFor="let head of headsTab">{{head}}</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr class="{{pet.idpet}}" *ngFor="let customer of searchCustomersResult">
-            <td>{{Pet.name}}</td>
-            <td>{{Pet.Race}}</td>
-            <td>{{Pet.Age}}</td>
-            <td><button value="Update" class="button-update-customer" (click)=setUpdateCustomer(customer)>Update</button></td>
-            <td><button value="Delete" class="button-delete-customer" (click)=deleteCustomer(customer)>Delete</button></td>
-        </tr>
-    </table>
-
 </body>
