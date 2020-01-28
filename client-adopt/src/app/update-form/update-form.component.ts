@@ -32,6 +32,7 @@ export class UpdateFormComponent implements OnInit {
       this.petService.searchPetById(idpet).subscribe(pet => {
         if (pet) {
           this.petname = pet.name;
+          
           this.pet = new Pet(pet);
         } else {
           this.gotoList();
@@ -48,8 +49,10 @@ export class UpdateFormComponent implements OnInit {
   }
 
   save() {
-    this.petService.savePet(this.pet);
-    this.gotoList();
+    this.petService.updatePet(this.pet).subscribe(data => {
+      console.log(this.pet);
+      this.gotoList();
+    })
   }
 
   gotoList() {

@@ -5,7 +5,7 @@ public class RegistrationPet {
 	private String name;
 	private String race;
 	private String age;
-	private String idPet;
+	private String idpet;
 
 	public RegistrationPet() {
 		// TODO Auto-generated constructor stub
@@ -18,12 +18,12 @@ public class RegistrationPet {
 		this.age = age;
 	}
 
-	public RegistrationPet(String name, String race, String age, String idPet) {
+	public RegistrationPet(String name, String race, String age, String idpet) {
 		super();
 		this.name = name;
 		this.race = race;
 		this.age = age;
-		this.idPet = idPet;
+		this.idpet = idpet;
 	}
 
 	public String getName() {
@@ -50,12 +50,12 @@ public class RegistrationPet {
 		this.age = age;
 	}
 
-	public String getIdPet() {
-		return idPet;
+	public String getIdpet() {
+		return idpet;
 	}
 
-	public void setIdPet(String idPet) {
-		this.idPet = idPet;
+	public void setIdpet(String idpet) {
+		this.idpet = idpet;
 	}
 
 }

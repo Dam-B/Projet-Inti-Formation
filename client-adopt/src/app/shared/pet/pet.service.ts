@@ -26,7 +26,9 @@ public number : number;
    * @param book
    */
    updatePet(pet: Pet): Observable<Pet>{
+     console.log(pet);
        return this.http.put<Pet>(`http://localhost:8080/pets/updatePet`, pet);
+       
    }
    
    /**

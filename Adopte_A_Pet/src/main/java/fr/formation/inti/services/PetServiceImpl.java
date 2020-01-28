@@ -39,23 +39,27 @@ public class PetServiceImpl implements IPetService {
 	@Override
 	public Pet update(Pet pet) {
 		
-		Adoption adoption = (Adoption) pet.getAdoptions();
+//		Adoption adoption = (Adoption) pet.getAdoptions();
 		String age = pet.getAge();
-		Categorie categorie = pet.getCategorie();
-		Departement dept = pet.getDepartement();
-		Historique histo = (Historique) pet.getHistoriques();
-		Transfert transfert = (Transfert) pet.getTransferts();
-		User user = userRepository.findByIduser(pet.getUser().getIduser());
-		
+		String name = pet.getName();
+		String race = pet.getRace();
+//		Categorie categorie = pet.getCategorie();
+//		Departement dept = pet.getDepartement();
+//		Historique histo = (Historique) pet.getHistoriques();
+//		Transfert transfert = (Transfert) pet.getTransferts();
+//		User user = userRepository.findByIduser(pet.getUser().getIduser());
+//		
 		Pet petDeBase = petRepository.findByIdpet(pet.getIdpet());
 		
-		petDeBase.setAdoptions((Set<Adoption>) adoption);
+//		petDeBase.setAdoptions((Set<Adoption>) adoption);
 		petDeBase.setAge(age);
-		petDeBase.setCategorie(categorie);
-		petDeBase.setDepartement(dept);
-		petDeBase.setHistoriques((Set<Historique>) histo);
-		petDeBase.setTransferts((Set<Transfert>) transfert);
-		petDeBase.setUser(user);
+		petDeBase.setName(name);
+		petDeBase.setRace(race);
+//		petDeBase.setCategorie(categorie);
+//		petDeBase.setDepartement(dept);
+//		petDeBase.setHistoriques((Set<Historique>) histo);
+//		petDeBase.setTransferts((Set<Transfert>) transfert);
+//		petDeBase.setUser(user);
 		
 		return petRepository.save(petDeBase);
 		

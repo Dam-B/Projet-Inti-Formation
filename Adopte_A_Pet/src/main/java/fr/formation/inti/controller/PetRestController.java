@@ -71,10 +71,12 @@ public class PetRestController {
     @PutMapping("/updatePet")
     public ResponseEntity<Pet> updatePet(@RequestBody RegistrationPet petRequest) {
         //, UriComponentsBuilder uriComponentBuilder
-        if (!petRepository.existsById(Integer.parseInt(petRequest.getIdPet()))) {
+        System.out.println(petRequest.getIdpet() + "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        if (!petRepository.existsById(Integer.parseInt(petRequest.getIdpet()))) {
             return new ResponseEntity<Pet>(HttpStatus.NOT_FOUND);
         }
         Pet pet = new Pet(petRequest.getName(),petRequest.getRace(),petRequest.getAge());
+       System.out.println(pet + "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         Pet petResponse = petService.update(pet);
         if (petResponse != null) {
             return new ResponseEntity<Pet>(petResponse, HttpStatus.OK);
