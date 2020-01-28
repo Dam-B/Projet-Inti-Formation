@@ -118,8 +118,9 @@ public class PetRestController {
     }
     
     @GetMapping("/countPet")
-    public ResponseEntity<Integer> countPet() {    
-        return new ResponseEntity<Integer>(HttpStatus.OK);
+    public ResponseEntity<Long> countPet() { 
+    	long nbpet = petRepository.count();
+        return new ResponseEntity<Long>(nbpet,HttpStatus.OK);
     } 
 
    

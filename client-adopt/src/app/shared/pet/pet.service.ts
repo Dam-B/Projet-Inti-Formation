@@ -7,7 +7,7 @@ import { Pet } from 'src/models/pet';
   providedIn: 'root'
 })
 export class PetService {
-
+public number : number;
   constructor(private http: HttpClient) { }
 
   getAll() {
@@ -41,7 +41,7 @@ export class PetService {
    * Search books by isbn
    * @param isbn
    */
-  searchPetByDepartment(departementName: String): Observable<Pet[]>{
+  searchPetByDepartment(departementName: string): Observable<Pet[]>{
       return  this.http.get<Pet[]>(`http://localhost:8080/pets/searchByDepartement/`+departementName);
   }
   
@@ -63,8 +63,8 @@ export class PetService {
   * Search books by title
   * @param title
   */
- countPet(nbpet:number): Observable<Pet>{
-  return this.http.get<Pet>(`http://localhost:8080/pets/countPet`);
+ countPet() {
+  return this.http.get<number>(`http://localhost:8080/pets/countPet`);
 }
 
 }
