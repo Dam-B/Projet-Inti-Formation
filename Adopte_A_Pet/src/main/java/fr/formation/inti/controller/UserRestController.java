@@ -1,5 +1,7 @@
 package fr.formation.inti.controller;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +71,8 @@ public class UserRestController {
         }
 //        petRequest.set(LocalDate.now()); NE PAS OUBLIER DE LE RECUP POUR LE USER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         User userRequest = new User(userdata.getUsername(),userdata.getPassword());
+        userRequest.setTitle(titleService.findByIdtitle(3));
+        userRequest.setDateCreation(new Date());
         User userResponse = userService.save(userRequest);
         if (userResponse != null) {
             return new ResponseEntity<User>(userResponse, HttpStatus.CREATED);
