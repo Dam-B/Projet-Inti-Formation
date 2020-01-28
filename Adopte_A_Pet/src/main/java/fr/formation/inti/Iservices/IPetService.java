@@ -25,4 +25,5 @@ public interface IPetService {
     Pet findByUser(User user);
     List<Pet> findByCategorie(Categorie categorie);
     Pet findByIdpet(Integer idpet);
+    Pet findByName(String name);
 }

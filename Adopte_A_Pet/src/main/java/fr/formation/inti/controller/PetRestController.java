@@ -1,5 +1,6 @@
 package fr.formation.inti.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.formation.inti.Registration;
+import fr.formation.inti.RegistrationPet;
 import fr.formation.inti.Iservices.ICategorieService;
 import fr.formation.inti.Iservices.IDepartementService;
 import fr.formation.inti.Iservices.IPetService;
 import fr.formation.inti.dao.IPetRepository;
 import fr.formation.inti.entities.Pet;
+import fr.formation.inti.entities.User;
 
 
 
@@ -48,13 +52,14 @@ public class PetRestController {
 	
 	
 	@PostMapping("/addPet")
-    public ResponseEntity<Pet> createNewCustomer(@RequestBody Pet petRequest) {
+    public ResponseEntity<Pet> createNewPet(@RequestBody RegistrationPet petData) {
         //, UriComponentsBuilder uriComponentBuilder
-        Pet existingPet = petService.findByIdpet(petRequest.getIdpet());
+		Pet existingPet = petService.findByName(petData.getName());
         if (existingPet != null) {
             return new ResponseEntity<Pet>(HttpStatus.CONFLICT);
         }
 //        petRequest.set(LocalDate.now()); NE PAS OUBLIER DE LE RECUP POUR LE USER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Pet petRequest = new Pet(petData.getName(),petData.getRace(),petData.getAge());
         Pet petResponse = petService.save(petRequest);
         if (petResponse != null) {
             return new ResponseEntity<Pet>(petResponse, HttpStatus.CREATED);
@@ -64,12 +69,13 @@ public class PetRestController {
 
     
     @PutMapping("/updatePet")
-    public ResponseEntity<Pet> updateCustomer(@RequestBody Pet petRequest) {
+    public ResponseEntity<Pet> updatePet(@RequestBody RegistrationPet petRequest) {
         //, UriComponentsBuilder uriComponentBuilder
-        if (!petRepository.existsById(petRequest.getIdpet())) {
+        if (!petRepository.existsById(Integer.parseInt(petRequest.getIdPet()))) {
             return new ResponseEntity<Pet>(HttpStatus.NOT_FOUND);
         }
-        Pet petResponse = petService.update(petRequest);
+        Pet pet = new Pet(petRequest.getName(),petRequest.getRace(),petRequest.getAge());
+        Pet petResponse = petService.update(pet);
         if (petResponse != null) {
             return new ResponseEntity<Pet>(petResponse, HttpStatus.OK);
         }

@@ -113,6 +113,11 @@ public class PetServiceImpl implements IPetService {
 		return petRepository.findByIdpet(idpet);
 	}
 
+	@Override
+	public Pet findByName(String name) {
+		return petRepository.findByName(name);
+	}
+
 	
 
 }

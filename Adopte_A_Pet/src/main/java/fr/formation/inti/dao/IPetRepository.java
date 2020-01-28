@@ -18,6 +18,7 @@ public interface IPetRepository extends JpaRepository<Pet, Integer>{
 //Find by dept
 //Find by catégorie
 //find by IDpet
+	Pet findByName(String name);
 	
 	}
 
