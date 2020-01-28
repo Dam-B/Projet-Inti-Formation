@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/user';
 import { UserService } from 'src/app/shared/user/user.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/shared/user/user.service';
 export class RegistrationComponent implements OnInit {
   user = new User();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,5 +27,6 @@ export class RegistrationComponent implements OnInit {
          console.log('An error occurs when saving the customer data');
      }
     );
+    this.router.navigate(['/login']);
   }
 }
